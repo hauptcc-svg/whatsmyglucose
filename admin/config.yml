@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded images go
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+
+      - name: "general"
+        label: "General — Contact & WhatsApp"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "WhatsApp Number (digits only, include country code)"
+            name: "whatsapp_number"
+            widget: "string"
+            hint: "e.g. 27825332623  (27 = South Africa country code)"
+
+          - label: "WhatsApp Pre-fill Message"
+            name: "whatsapp_message"
+            widget: "text"
+            hint: "Message that auto-fills when someone taps the WhatsApp button"
+
+      - name: "group"
+        label: "June/Next Group Programme"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "Group Month & Year"
+            name: "group_month"
+            widget: "string"
+            hint: "e.g. June 2026 — appears in headings and the CTA section"
+
+          - label: "Group Availability Line"
+            name: "group_availability"
+            widget: "string"
+            hint: "e.g. Limited spaces — applications open now"
+
+          - label: "Applications Open?"
+            name: "applications_open"
+            widget: "boolean"
+            default: true
+            hint: "Toggle off to hide the 'Apply Now' button and show 'Join waitlist'"
+
+          - label: "Group Description"
+            name: "group_description"
+            widget: "text"
+            hint: "Short paragraph shown in the package section"
+
+      - name: "about"
+        label: "About Dr. Janny"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "Bio paragraph 1"
+            name: "bio_p1"
+            widget: "text"
+
+          - label: "Bio paragraph 2"
+            name: "bio_p2"
+            widget: "text"

@@ -1131,6 +1131,8 @@
       .result-cta-primary, .result-cta-secondary { justify-content: center; }
     }
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
 </head>
 <body>
 
@@ -1995,6 +1997,46 @@ updateChart('white-bread');
     var b=document.getElementById(id); if(b) b.addEventListener('click',reset);
   });
   setProgress(0);
+})();
+</script>
+
+<script>
+// Decap CMS content loader — replaces key fields from content/site.json
+(function(){
+  fetch('/content/site.json?_=' + Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if(!d) return;
+
+      // WhatsApp links
+      var wa = 'https://wa.me/' + d.whatsapp_number + '?text=' + encodeURIComponent(d.whatsapp_message);
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+        // preserve quiz-specific link for "Take Action" result
+        if(!a.href.includes('quiz')) a.href = wa;
+      });
+
+      // Group month text nodes
+      document.querySelectorAll('*').forEach(function(el){
+        if(el.children.length === 0 && el.textContent.includes('June 2026')){
+          el.textContent = el.textContent.replace(/June 2026/g, d.group_month);
+        }
+      });
+
+      // Group availability line
+      var avail = document.querySelector('.pkg-availability, [data-cms="availability"]');
+      if(avail && d.group_availability) avail.textContent = d.group_availability;
+
+      // Group description
+      var desc = document.querySelector('[data-cms="group-desc"]');
+      if(desc && d.group_description) desc.textContent = d.group_description;
+
+      // Applications open/closed toggle
+      var applyBtn = document.querySelector('[data-cms="apply-btn"]');
+      if(applyBtn){
+        applyBtn.textContent = d.applications_open ? 'Apply for June Programme →' : 'Join the Waitlist →';
+      }
+    })
+    .catch(function(){});
 })();
 </script>
 </body>
