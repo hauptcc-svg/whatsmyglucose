@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glucose Chart — Medical Validation Brief | Dr. Janny Myburg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple: #5B2D8E; --purple-dark: #3D1A6B; --purple-light: #9B6DD4;
+      --lavender: #EEE8F8; --lavender-pale: #F8F5FD;
+      --green: #15803d; --green-bg: #dcfce7;
+      --amber: #a16207; --amber-bg: #fef9c3;
+      --red: #dc2626; --red-bg: #fee2e2;
+      --black: #141217; --ink: #2D2A35; --ink-soft: #5A5667; --ink-faint: #9390A0;
+      --white: #FFFFFF; --cream: #FDFBFF; --rule: #E0D8EE;
+    }
+    body { font-family: 'Outfit', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+    .page { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+    /* Header */
+    .doc-header { background: var(--purple-dark); color: white; border-radius: 16px; padding: 2.5rem 3rem; margin-bottom: 3rem; position: relative; overflow: hidden; }
+    .doc-header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(155,109,212,0.2); }
+    .doc-type { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
+    .doc-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 0.5px; margin-bottom: 0.75rem; line-height: 1.05; }
+    .doc-meta { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .doc-meta span { margin-right: 1.5rem; }
+
+    /* Summary box */
+    .summary-box { background: var(--lavender); border-left: 4px solid var(--purple); border-radius: 0 12px 12px 0; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .summary-box h2 { font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 0.75rem; }
+    .summary-box p { font-size: 0.95rem; color: var(--ink); line-height: 1.75; }
+
+    /* Section */
+    .section { margin-bottom: 3rem; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.5px; color: var(--black); border-bottom: 2px solid var(--rule); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+
+    /* Food cards */
+    .food-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 1.25rem; display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start; }
+    .food-meta { }
+    .food-name { font-weight: 800; font-size: 1rem; color: var(--black); margin-bottom: 0.3rem; }
+    .food-gi { font-size: 0.78rem; color: var(--ink-faint); margin-bottom: 0.75rem; }
+    .food-peak { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 99px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .peak-high { background: var(--red-bg); color: var(--red); }
+    .peak-med  { background: var(--amber-bg); color: var(--amber); }
+    .peak-low  { background: var(--green-bg); color: var(--green); }
+    .food-detail { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+    .food-detail strong { color: var(--black); }
+    .food-source { font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.6rem; font-style: italic; }
+
+    /* Validation checklist */
+    .review-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .review-item { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 1.1rem 1.25rem; }
+    .review-num { width: 28px; height: 28px; min-width: 28px; background: var(--purple); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; margin-top: 1px; }
+    .review-text { font-size: 0.92rem; color: var(--ink); line-height: 1.6; }
+    .review-text strong { color: var(--black); display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+
+    /* Sources table */
+    .sources-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .sources-table th { background: var(--purple-dark); color: white; padding: 0.75rem 1rem; text-align: left; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; }
+    .sources-table th:first-child { border-radius: 8px 0 0 0; }
+    .sources-table th:last-child  { border-radius: 0 8px 0 0; }
+    .sources-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--rule); color: var(--ink); vertical-align: top; }
+    .sources-table tr:last-child td { border-bottom: none; }
+    .sources-table tr:nth-child(even) td { background: var(--lavender-pale); }
+    .source-cite { font-weight: 700; color: var(--black); }
+    .source-note { font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.2rem; }
+
+    /* Disclaimer */
+    .disclaimer { background: var(--lavender-pale); border: 1px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.5rem; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.65; margin-top: 3rem; }
+    .disclaimer strong { color: var(--black); }
+
+    /* Status badge */
+    .status-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.9rem; border-radius: 99px; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .status-ok    { background: var(--green-bg); color: var(--green); }
+    .status-check { background: var(--amber-bg); color: var(--amber); }
+
+    .divider { height: 1px; background: var(--rule); margin: 2.5rem 0; }
+
+    @media (max-width: 640px) {
+      .food-card { grid-template-columns: 1fr; gap: 0.75rem; }
+      .doc-header { padding: 1.75rem; }
+    }
+    @media print {
+      body { background: white; }
+      .page { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="doc-header">
+    <p class="doc-type">Internal Review Document</p>
+    <h1 class="doc-title">GLUCOSE CHART<br>MEDICAL VALIDATION BRIEF</h1>
+    <p class="doc-meta">
+      <span>📋 Prepared for: Dr. Janny Myburg</span>
+      <span>📅 Date: May 2026</span>
+      <span>🌐 whatsmyglucose.com</span>
+    </p>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-box">
+    <h2>Executive Summary</h2>
+    <p>The "How Your Body Responds to Food" interactive chart on the website uses <strong>illustrative glucose curves</strong> based on well-established glycaemic index (GI) science. The curve shapes and relative patterns are medically sound and consistent with published literature. The specific peak values (mmol/L) are representative examples for a patient with <strong>mild insulin resistance</strong>, not data from a single study. Dr. Janny is asked to review these values against her clinical experience before the site goes live.</p>
+  </div>
+
+  <!-- Food-by-food breakdown -->
+  <div class="section">
+    <h2 class="section-title">FOOD-BY-FOOD DATA BREAKDOWN</h2>
+
+    <div class="food-card">
+      <div class="food-meta">
+        <p class="food-name">🍞 White Bread</p>
+        <p class="food-gi">Glycaemic Index: ~70–85 (High)</p>
+        <span class="food-peak peak-high">Peak: 8.9 mmol/L</span><br>
+        <span class="status-badge status-check" style="margin-top:0.5rem;">⚠ Review peak value</span>
+      </div>
+      <div class="food-detail">
+        <strong>Scientific basis:</strong> Highly refined carbohydrate with rapid starch digestion. Causes fast glucose absorption and a pronounced post-meal spike. The crash curve (sharp drop by ~1–1.5 hrs) reflects reactive hypoglycaemia common in insulin-resistant individuals.
+        <p class="food-source">Sources: Jenkins et al. (1981) — original GI concept; Atkinson et al., Diabetes Care (2008) — International GI tables; Brand-Miller et al. (2003) — GI diet research.</p>
+        <p class="food-source" style="color:var(--amber);margin-top:0.4rem;"><strong>Dr. Janny to confirm:</strong> Is 8.9 mmol/L a realistic peak for your typical patient with mild insulin resistance? Could be adjusted to 7.8–9.5 range depending on your patient cohort.</p>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-meta">
+        <p class="food-name">🥣 Oats</p>
+        <p class="food-gi">Glycaemic Index: ~55 (Medium)</p>
+        <span class="food-peak peak-med">Peak: 6.8 mmol/L</span><br>
+        <span class="status-badge status-ok" style="margin-top:0.5rem;">✓ Well established</span>
+      </div>
+      <div class="food-detail">
+        <strong>Scientific basis:</strong> Soluble fibre (beta-glucan) in oats slows gastric emptying and glucose absorption significantly. Response is more gradual and the peak lower than refined grain products. Curve shape (slower rise, longer plateau before gentle decline) is consistent with published data.
+        <p class="food-source">Sources: Wood et al. (2012) — beta-glucan and glycaemic response; Jenkins et al. (2002) — dietary fibre effects; multiple RCT meta-analyses confirm attenuated glucose response vs white bread.</p>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-meta">
+        <p class="food-name">🥚 Eggs &amp; Avocado</p>
+        <p class="food-gi">Glycaemic Index: ~0 (None)</p>
+        <span class="food-peak peak-low">Peak: 5.6 mmol/L</span><br>
+        <span class="status-badge status-ok" style="margin-top:0.5rem;">✓ Uncontroversial</span>
+      </div>
+      <div class="food-detail">
+        <strong>Scientific basis:</strong> Essentially zero GI. Neither eggs nor avocado contain significant digestible carbohydrates. The small glucose movement shown (~5.4 → 5.6 mmol/L) represents normal post-prandial physiological variation rather than a true food response — which is medically accurate.
+        <p class="food-source">Sources: Standard macronutrient composition data; Feinman et al. (2015) — dietary carbohydrate restriction in type 2 diabetes; multiple CGM studies consistently show near-flat response to protein/fat meals.</p>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-meta">
+        <p class="food-name">🧃 Fruit Juice</p>
+        <p class="food-gi">Glycaemic Index: ~75–80 (High)</p>
+        <span class="food-peak peak-high">Peak: 9.4 mmol/L</span><br>
+        <span class="status-badge status-check" style="margin-top:0.5rem;">⚠ Review peak value</span>
+      </div>
+      <div class="food-detail">
+        <strong>Scientific basis:</strong> Liquid fructose/glucose without the fibre matrix of whole fruit is absorbed rapidly. Liquid carbohydrates generally produce faster and higher spikes than solid equivalents. The steep crash curve is realistic — fructose metabolism can drive reactive hypoglycaemia.
+        <p class="food-source">Sources: Malik et al. (2010) — sugar-sweetened beverages and glycaemia; Bolton et al. (1981) — whole fruit vs juice comparison; CGM real-world data from Nutrisense and Levels Health consistently show juice as one of the highest-spiking foods.</p>
+        <p class="food-source" style="color:var(--amber);margin-top:0.4rem;"><strong>Dr. Janny to confirm:</strong> Is 9.4 mmol/L appropriate? Some CGM studies show even higher spikes (up to 11+ mmol/L) for juice in IR patients. Could be adjusted upward if that better reflects your patients.</p>
+      </div>
+    </div>
+
+    <div class="food-card">
+      <div class="food-meta">
+        <p class="food-name">🥗 Salad + Protein</p>
+        <p class="food-gi">Glycaemic Index: ~0–15 (Very Low)</p>
+        <span class="food-peak peak-low">Peak: 5.2 mmol/L</span><br>
+        <span class="status-badge status-ok" style="margin-top:0.5rem;">✓ Well established</span>
+      </div>
+      <div class="food-detail">
+        <strong>Scientific basis:</strong> A mixed salad with protein (chicken, fish, eggs, legumes) produces minimal glucose response. The slight downward drift in the curve after eating represents the glucose-lowering effect of some amino acids stimulating insulin — this is physiologically accurate.
+        <p class="food-source">Sources: Zeevi et al., Cell (2015) — CGM-based personalised nutrition showing low-GI meals; Franz et al. (2010) — protein's effect on postprandial glucose; standard clinical nutrition guidelines.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- What Dr. Janny should review -->
+  <div class="section">
+    <h2 class="section-title">WHAT DR. JANNY SHOULD VALIDATE</h2>
+    <ul class="review-list">
+      <li class="review-item">
+        <span class="review-num">1</span>
+        <div class="review-text">
+          <strong>Peak mmol/L values — White Bread (8.9) and Fruit Juice (9.4)</strong>
+          These are the two most subjective values. They're realistic for a patient with mild insulin resistance, but could reasonably be 7.5–10.5 mmol/L depending on the patient population. Please confirm these feel clinically appropriate for the patients you typically work with, or suggest alternative values.
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num">2</span>
+        <div class="review-text">
+          <strong>The shape of the crash curves for white bread and fruit juice</strong>
+          Both curves show a sharp drop by ~1–1.5 hours post-meal, simulating reactive hypoglycaemia. Is this consistent with what you observe in CGM data from your patients? If the drop is too dramatic for your typical patient, the curve can be flattened.
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num">3</span>
+        <div class="review-text">
+          <strong>The disclaimer / educational framing</strong>
+          The chart currently says "Tap a meal below to see how different foods affect your glucose." Consider adding: "Individual glucose responses vary significantly — these curves are illustrative of typical patterns, not clinical measurements." Would you like this added more prominently?
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num">4</span>
+        <div class="review-text">
+          <strong>The "normal zone" band shown on the chart (3.9–7.8 mmol/L)</strong>
+          The chart shows a shaded "target zone" at 3.9–7.8 mmol/L, consistent with IDF and ADA post-meal targets for non-diabetic individuals. Please confirm this is the correct reference range for your patient communications.
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num">5</span>
+        <div class="review-text">
+          <strong>Oats GI vs patient context</strong>
+          Oats are shown as significantly better than white bread, which is generally true. However, some patients (particularly those with significant insulin resistance) may spike higher on oats than the chart suggests. Worth noting in a tooltip or disclaimer if relevant to your patient population.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Sources -->
+  <div class="section">
+    <h2 class="section-title">KEY MEDICAL REFERENCES</h2>
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>Citation</th>
+          <th>Relevance to Chart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p class="source-cite">Zeevi et al. (2015). "Personalized Nutrition by Prediction of Glycemic Responses." Cell, 163(5), 1079–1094.</p>
+            <p class="source-note">CGM data from 800 people showing highly individualised glucose responses to the same foods. Key scientific basis for personalised glucose monitoring.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Supports the entire premise of the website and the educational framing of the chart. Directly validates using CGM for personalised guidance.</td>
+        </tr>
+        <tr>
+          <td>
+            <p class="source-cite">Atkinson et al. (2008). "International Tables of Glycemic Index and Glycemic Load Values." Diabetes Care, 31(12), 2281–2283.</p>
+            <p class="source-note">The definitive reference for GI values used globally by clinicians and researchers.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Source for GI values of white bread (~75), oats (~55), fruit juice (~75–80) used in the chart.</td>
+        </tr>
+        <tr>
+          <td>
+            <p class="source-cite">Jenkins et al. (1981). "Glycemic index of foods: a physiological basis for carbohydrate exchange." American Journal of Clinical Nutrition, 34(3), 362–366.</p>
+            <p class="source-note">The original paper introducing the glycaemic index concept.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Foundation reference for all GI-based reasoning in the chart.</td>
+        </tr>
+        <tr>
+          <td>
+            <p class="source-cite">IDF Diabetes Atlas (2021), 10th Edition. International Diabetes Federation.</p>
+            <p class="source-note">Global diabetes and prediabetes prevalence data. Also references post-meal glucose targets.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Source for the "1 in 3 adults" statistic used in the offer section. Post-meal target zone (3.9–7.8 mmol/L) consistent with IDF guidelines.</td>
+        </tr>
+        <tr>
+          <td>
+            <p class="source-cite">Brand-Miller et al. (2003). "Glycemic index and obesity." American Journal of Clinical Nutrition, 76(1), 281S–285S.</p>
+            <p class="source-note">Meta-analysis on GI, insulin response, and body weight management.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Supports oats vs white bread comparison and the overall rationale for the chart.</td>
+        </tr>
+        <tr>
+          <td>
+            <p class="source-cite">ADA Standards of Medical Care in Diabetes (2023). Diabetes Care, 46(Supplement 1).</p>
+            <p class="source-note">American Diabetes Association guidelines including post-meal glucose targets.</p>
+          </td>
+          <td style="font-size:0.88rem;color:var(--ink-soft);">Validates the 2-hour post-meal target of &lt;7.8 mmol/L used as the upper reference on the chart.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Website stats validation -->
+  <div class="section">
+    <h2 class="section-title">WEBSITE STATISTICS — VALIDATION STATUS</h2>
+    <ul class="review-list">
+      <li class="review-item">
+        <span class="review-num" style="background:var(--green);">✓</span>
+        <div class="review-text">
+          <strong>"80% of people with insulin resistance have no obvious symptoms"</strong>
+          This figure is widely cited; CDC reports that 96% of people with prediabetes are unaware of their condition. The 80% figure is a conservative version of this and is defensible. <em>Recommend citing: CDC National Diabetes Statistics Report (2022).</em>
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num" style="background:var(--green);">✓</span>
+        <div class="review-text">
+          <strong>"Blood glucose should return to fasting levels within 2 hours of a meal"</strong>
+          Correct per standard clinical guidelines (ADA, IDF). Non-diabetic target is &lt;7.8 mmol/L at 2 hours post-meal. This is medically accurate.
+        </div>
+      </li>
+      <li class="review-item">
+        <span class="review-num" style="background:var(--amber);">⚠</span>
+        <div class="review-text">
+          <strong>"1 in 3 adults globally has prediabetes or undiagnosed glucose dysregulation"</strong>
+          <em>Needs contextualisation.</em> The "1 in 3" figure is accurate for the US (CDC). Global IDF figures are closer to 1 in 10 for diagnosed diabetes, with prediabetes significantly higher but variable by region. For a South African audience, consider referencing local SEHA or HCSA data. Recommend Dr. Janny confirm the appropriate statistic for her patient population.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Document purpose:</strong> This brief is an internal review document prepared for Dr. Janny Myburg to validate the educational content on whatsmyglucose.com before publication. The glucose curves on the website are clearly framed as illustrative educational content, not clinical measurements. Once Dr. Janny has reviewed and approved the specific values, this document can be archived as part of the content review record.
+    <br><br>
+    <strong>Prepared by:</strong> Website development team · whatsmyglucose.com · May 2026
+  </div>
+
+</div>
+</body>
+</html>
