@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: hauptcc-svg/whatsmyglucose
   branch: main
 
 # Where uploaded images go
