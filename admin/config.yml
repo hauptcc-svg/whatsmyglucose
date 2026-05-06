@@ -188,54 +188,6 @@ collections:
             name: "group_description"
             widget: "text"
 
-      # ─── TESTIMONIALS ───────────────────────────────────────────────────────
-      - name: "testimonials"
-        label: "⭐ Testimonials"
-        file: "content/site.json"
-        format: json
-        fields:
-          - label: "Section lead text"
-            name: "testimonials_lead"
-            widget: "string"
-            hint: "Short line shown under the section heading"
-
-          - label: "Testimonials"
-            name: "testimonials"
-            widget: "list"
-            hint: "Add, edit or remove patient testimonials"
-            fields:
-              - label: "Quote"
-                name: "quote"
-                widget: "text"
-                hint: "The patient's words — no need for quotation marks"
-              - label: "Name"
-                name: "name"
-                widget: "string"
-                hint: "e.g. Sarah M. or just a first name"
-              - label: "Location / context"
-                name: "location"
-                widget: "string"
-                required: false
-                hint: "Optional — e.g. Cape Town  or  Programme participant"
-
-      # ─── FAQ ────────────────────────────────────────────────────────────────
-      - name: "faq"
-        label: "❓ FAQ"
-        file: "content/site.json"
-        format: json
-        fields:
-          - label: "FAQ items"
-            name: "faq"
-            widget: "list"
-            hint: "Add, edit or remove frequently asked questions"
-            fields:
-              - label: "Question"
-                name: "question"
-                widget: "string"
-              - label: "Answer"
-                name: "answer"
-                widget: "text"
-
       # ─── CONTACT & WHATSAPP ─────────────────────────────────────────────────
       - name: "general"
         label: "📱 Contact & WhatsApp"
