@@ -2036,11 +2036,14 @@ updateChart('white-bread');
 </script>
 
 <script>
-// Sveltia CMS content loader — syncs all editable fields from content/site.json
+// Sveltia CMS content loader — fetches all section files and merges them
 (function(){
-  fetch('/content/site.json?_=' + Date.now())
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){
+  var files = ['hero','doctor','services','group','general','cta','seo'];
+  var ts = '?_=' + Date.now();
+  Promise.all(files.map(function(f){ return fetch('/content/'+f+'.json'+ts).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }); }))
+    .then(function(results){
+      var d = Object.assign.apply(Object, [{}].concat(results));
+      if(!Object.keys(d).length) return;
       if(!d) return;
 
       // ── Helper functions ────────────────────────────────────────────────────

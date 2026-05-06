@@ -14,7 +14,7 @@ collections:
       # ─── HERO SECTION ──────────────────────────────────────────────────────
       - name: "hero"
         label: "🏠 Hero Section"
-        file: "content/site.json"
+        file: "content/hero.json"
         format: json
         fields:
           - label: "Doctor kicker line"
@@ -45,7 +45,7 @@ collections:
       # ─── DOCTOR PROFILE ────────────────────────────────────────────────────
       - name: "doctor"
         label: "👩‍⚕️ Doctor Profile"
-        file: "content/site.json"
+        file: "content/doctor.json"
         format: json
         fields:
           - label: "Profile photo"
@@ -74,7 +74,7 @@ collections:
       # ─── SERVICES ──────────────────────────────────────────────────────────
       - name: "services"
         label: "🛠️ Services (What We Offer)"
-        file: "content/site.json"
+        file: "content/services.json"
         format: json
         fields:
           - label: "Service 1 title"
@@ -100,7 +100,7 @@ collections:
       # ─── GROUP PROGRAMME ────────────────────────────────────────────────────
       - name: "group"
         label: "👥 Group Programme (changes monthly)"
-        file: "content/site.json"
+        file: "content/group.json"
         format: json
         fields:
           - label: "Group Month & Year"
@@ -191,7 +191,7 @@ collections:
       # ─── CONTACT & WHATSAPP ─────────────────────────────────────────────────
       - name: "general"
         label: "📱 Contact & WhatsApp"
-        file: "content/site.json"
+        file: "content/general.json"
         format: json
         fields:
           - label: "WhatsApp Number (digits only, include country code)"
@@ -207,7 +207,7 @@ collections:
       # ─── CTA SECTION ────────────────────────────────────────────────────────
       - name: "cta"
         label: "📣 Call to Action Section"
-        file: "content/site.json"
+        file: "content/cta.json"
         format: json
         fields:
           - label: "CTA Heading"
@@ -223,7 +223,7 @@ collections:
       # ─── SEO & SOCIAL ────────────────────────────────────────────────────────
       - name: "seo"
         label: "🔍 SEO & Social Preview"
-        file: "content/site.json"
+        file: "content/seo.json"
         format: json
         fields:
           - label: "Page title (browser tab + WhatsApp/Facebook preview)"
