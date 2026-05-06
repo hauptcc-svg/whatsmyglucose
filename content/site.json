@@ -1,6 +1,24 @@
 {
   "whatsapp_number": "27825332623",
   "whatsapp_message": "Hi Dr. Janny! I'd like to book a glucose health consultation. Please let me know your availability.",
+
+  "hero_kicker": "Dr. Janny Myburg · MBChB · Diploma in Mental Health",
+  "hero_script": "Understand your body. Take control.",
+  "hero_desc": "For people with insulin resistance, prediabetes, or wanting to lose weight — and anyone ready to understand what their blood results actually mean.",
+  "hero_btn1_text": "View Courses",
+  "hero_btn1_url": "https://www.udemy.com/user/janny-myburg/",
+
+  "doctor_photo": "images/dr-janny.jpg",
+  "doctor_name": "Dr. Janny Myburg",
+  "doctor_credentials": "MBChB · Diploma in Mental Health",
+  "bio_p1": "Dr. Janny Myburg (MBChB, Diploma in Mental Health) is a medical doctor with a passion for making complex health information genuinely accessible.",
+  "bio_p2": "After years of clinical practice, she recognised a pattern: patients were leaving consultations with results they didn't understand and no practical guidance on what to do next. Glucose health was a recurring blind spot — one with enormous consequences for energy, weight, mental clarity, and long-term disease risk.",
+
+  "service1_title": "Online Course — Understand Your Glucose",
+  "service2_title": "Personal Consultation with Dr. Janny",
+  "service3_title": "Digital Resources on Gumroad",
+  "service4_title": "Free Starter Guide",
+
   "group_month": "June 2026",
   "group_status_badge": "Starting Soon",
   "group_card_title": "JUNE 2026 GROUP",
@@ -30,6 +48,53 @@
   "group_apply_btn_text": "Apply for the June Group →",
   "group_join_btn_text": "Join the June Group →",
   "group_description": "The June 2026 group programme brings together a small cohort of participants for a structured glucose health experience — with Dr. Janny guiding the group through the process.",
-  "bio_p1": "Dr. Janny Myburg (MBChB, Diploma in Mental Health) is a medical doctor with a passion for preventive health and metabolic wellness. After years of clinical practice, she saw a growing need for education around glucose — the invisible driver behind energy, weight, mood, and long-term disease risk.",
-  "bio_p2": "She created What's My Glucose to bridge that gap: combining continuous glucose monitoring with personalised coaching to help people understand their bodies from the inside out."
+
+  "testimonials_lead": "Hear from people who have taken control of their glucose health with Dr. Janny's guidance.",
+  "testimonials": [
+    {
+      "quote": "I had no idea my blood sugar was causing my afternoon energy crashes. After Dr. Janny's programme I understand exactly what to eat and when — I feel completely different.",
+      "name": "Sarah M.",
+      "location": "Cape Town"
+    },
+    {
+      "quote": "The CGM was eye-opening. Seeing my body's real-time response to food made everything click. Dr. Janny explained it all in a way that actually made sense.",
+      "name": "Michael T.",
+      "location": "Johannesburg"
+    },
+    {
+      "quote": "I've tried everything for weight loss. Understanding my glucose was the missing piece. Simple, practical, and life-changing.",
+      "name": "Liezel V.",
+      "location": "Group Programme participant"
+    }
+  ],
+
+  "faq": [
+    {
+      "question": "Do I need a CGM (continuous glucose monitor) to participate?",
+      "answer": "No — a CGM is optional. The course and group programme are valuable without one. However, wearing a CGM for even 2 weeks can make your learning much more personal and impactful, because you see your own body's responses in real time."
+    },
+    {
+      "question": "Is this suitable for someone who has already been diagnosed with diabetes?",
+      "answer": "The programme is primarily designed for people with insulin resistance, prediabetes, or those wanting to optimise their metabolic health. If you have Type 2 diabetes and are on medication, please consult your doctor before joining — Dr. Janny can also discuss this with you in a personal consultation."
+    },
+    {
+      "question": "How is an online consultation with Dr. Janny structured?",
+      "answer": "A one-on-one video consultation typically runs 45–60 minutes. Dr. Janny will review your blood results, discuss your symptoms and goals, and provide a personalised action plan. You can also share CGM data if you have it."
+    },
+    {
+      "question": "What if I miss a live webinar session in the group programme?",
+      "answer": "All live webinar sessions are recorded and shared with group participants, so you won't miss anything if you can't attend live."
+    },
+    {
+      "question": "How do I purchase a CGM in South Africa?",
+      "answer": "Dr. Janny can guide you on where to purchase a CGM and which sensor is recommended. Common options available in South Africa include the Libre system. This can be discussed in your consultation or at the start of the group programme."
+    }
+  ],
+
+  "cta_heading": "READY TO UNDERSTAND YOUR BODY?",
+  "cta_lead": "Start with a course, book a personal consultation, or join the June 2026 group — all designed to make complex medical information simple and actionable.",
+
+  "seo_title": "What's My Glucose – Dr. Janny Myburg",
+  "seo_description": "Understand your body. Take control. For people with insulin resistance, prediabetes, or wanting to lose weight — with Dr. Janny Myburg MBChB.",
+  "seo_og_image": "images/dr-janny.jpg"
 }

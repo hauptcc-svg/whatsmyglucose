@@ -3,7 +3,6 @@ backend:
   repo: hauptcc-svg/whatsmyglucose
   branch: main
 
-# Where uploaded images go
 media_folder: "images"
 public_folder: "/images"
 
@@ -12,23 +11,95 @@ collections:
     label: "Site Settings"
     files:
 
-      - name: "general"
-        label: "General — Contact & WhatsApp"
+      # ─── HERO SECTION ──────────────────────────────────────────────────────
+      - name: "hero"
+        label: "🏠 Hero Section"
         file: "content/site.json"
         format: json
         fields:
-          - label: "WhatsApp Number (digits only, include country code)"
-            name: "whatsapp_number"
+          - label: "Doctor kicker line"
+            name: "hero_kicker"
             widget: "string"
-            hint: "e.g. 27825332623  (27 = South Africa country code)"
+            hint: "Small line above the main heading — e.g. Dr. Janny Myburg · MBChB"
 
-          - label: "WhatsApp Pre-fill Message"
-            name: "whatsapp_message"
+          - label: "Tagline (script text)"
+            name: "hero_script"
+            widget: "string"
+            hint: "Italic script line — e.g. Understand your body. Take control."
+
+          - label: "Hero description"
+            name: "hero_desc"
             widget: "text"
-            hint: "Message that auto-fills when someone taps the WhatsApp button"
+            hint: "Short paragraph under the tagline"
 
+          - label: "Primary button text"
+            name: "hero_btn1_text"
+            widget: "string"
+            hint: "e.g. View Courses"
+
+          - label: "Primary button URL"
+            name: "hero_btn1_url"
+            widget: "string"
+            hint: "e.g. Udemy course link"
+
+      # ─── DOCTOR PROFILE ────────────────────────────────────────────────────
+      - name: "doctor"
+        label: "👩‍⚕️ Doctor Profile"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "Profile photo"
+            name: "doctor_photo"
+            widget: "image"
+            hint: "Upload a new photo of Dr. Janny — recommended size 600×700px"
+
+          - label: "Doctor name"
+            name: "doctor_name"
+            widget: "string"
+            hint: "e.g. Dr. Janny Myburg"
+
+          - label: "Credentials line"
+            name: "doctor_credentials"
+            widget: "string"
+            hint: "e.g. MBChB · Diploma in Mental Health"
+
+          - label: "Bio paragraph 1"
+            name: "bio_p1"
+            widget: "text"
+
+          - label: "Bio paragraph 2"
+            name: "bio_p2"
+            widget: "text"
+
+      # ─── SERVICES ──────────────────────────────────────────────────────────
+      - name: "services"
+        label: "🛠️ Services (What We Offer)"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "Service 1 title"
+            name: "service1_title"
+            widget: "string"
+            hint: "e.g. Online Course — Understand Your Glucose"
+
+          - label: "Service 2 title"
+            name: "service2_title"
+            widget: "string"
+            hint: "e.g. Personal Consultation with Dr. Janny"
+
+          - label: "Service 3 title"
+            name: "service3_title"
+            widget: "string"
+            hint: "e.g. Digital Resources on Gumroad"
+
+          - label: "Service 4 title"
+            name: "service4_title"
+            widget: "string"
+            hint: "e.g. Free Starter Guide"
+
+      # ─── GROUP PROGRAMME ────────────────────────────────────────────────────
       - name: "group"
-        label: "Group Programme (changes monthly)"
+        label: "👥 Group Programme (changes monthly)"
         file: "content/site.json"
         format: json
         fields:
@@ -55,12 +126,10 @@ collections:
           - label: "Left-side description"
             name: "group_left_desc"
             widget: "text"
-            hint: "Short paragraph shown on the left side of the group section"
 
           - label: "Left-side bullet points"
             name: "group_left_bullets"
             widget: "list"
-            hint: "Tick-list shown on the left side of the group section"
             field:
               label: "Bullet"
               name: "bullet"
@@ -69,12 +138,10 @@ collections:
           - label: "Card intro sentence"
             name: "group_intro"
             widget: "string"
-            hint: "Short line shown above the includes list inside the card"
 
           - label: "What's included (card list)"
             name: "group_includes"
             widget: "list"
-            hint: "Items shown inside the package card"
             field:
               label: "Item"
               name: "item"
@@ -88,53 +155,136 @@ collections:
           - label: "Price note"
             name: "group_price_note"
             widget: "text"
-            hint: "Small text under the price (use \\n for line breaks)"
+            hint: "Small text under the price"
 
-          - label: "Urgency title (calendar box)"
+          - label: "Urgency title"
             name: "group_urgency_title"
             widget: "string"
-            hint: "e.g. Applications now open"
 
           - label: "Urgency subtitle"
             name: "group_urgency_sub"
             widget: "string"
-            hint: "e.g. Small cohort — spaces fill quickly. Secure yours early."
 
           - label: "Applications Open?"
             name: "applications_open"
             widget: "boolean"
             default: true
-            hint: "Toggle OFF to swap the Apply button for a Join Waitlist button"
+            hint: "Toggle OFF to swap Apply button for Join Waitlist"
 
-          - label: "Apply / Join button URL"
+          - label: "Apply / Waitlist button URL"
             name: "group_apply_url"
             widget: "string"
-            hint: "MailerLite form URL for the Apply (or Waitlist) button"
+            hint: "MailerLite form URL"
 
           - label: "Apply button text"
             name: "group_apply_btn_text"
             widget: "string"
-            hint: "e.g. Apply for the June Group →"
 
           - label: "Join button text (left side)"
             name: "group_join_btn_text"
             widget: "string"
-            hint: "e.g. Join the June Group →"
 
-          - label: "Group description (used internally / CTA section)"
+          - label: "Group description (used in CTA)"
             name: "group_description"
             widget: "text"
-            hint: "Longer paragraph about the group programme"
 
-      - name: "about"
-        label: "About Dr. Janny"
+      # ─── TESTIMONIALS ───────────────────────────────────────────────────────
+      - name: "testimonials"
+        label: "⭐ Testimonials"
         file: "content/site.json"
         format: json
         fields:
-          - label: "Bio paragraph 1"
-            name: "bio_p1"
-            widget: "text"
+          - label: "Section lead text"
+            name: "testimonials_lead"
+            widget: "string"
+            hint: "Short line shown under the section heading"
 
-          - label: "Bio paragraph 2"
-            name: "bio_p2"
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            hint: "Add, edit or remove patient testimonials"
+            fields:
+              - label: "Quote"
+                name: "quote"
+                widget: "text"
+                hint: "The patient's words — no need for quotation marks"
+              - label: "Name"
+                name: "name"
+                widget: "string"
+                hint: "e.g. Sarah M. or just a first name"
+              - label: "Location / context"
+                name: "location"
+                widget: "string"
+                required: false
+                hint: "Optional — e.g. Cape Town  or  Programme participant"
+
+      # ─── FAQ ────────────────────────────────────────────────────────────────
+      - name: "faq"
+        label: "❓ FAQ"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "FAQ items"
+            name: "faq"
+            widget: "list"
+            hint: "Add, edit or remove frequently asked questions"
+            fields:
+              - label: "Question"
+                name: "question"
+                widget: "string"
+              - label: "Answer"
+                name: "answer"
+                widget: "text"
+
+      # ─── CONTACT & WHATSAPP ─────────────────────────────────────────────────
+      - name: "general"
+        label: "📱 Contact & WhatsApp"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "WhatsApp Number (digits only, include country code)"
+            name: "whatsapp_number"
+            widget: "string"
+            hint: "e.g. 27825332623  (27 = South Africa)"
+
+          - label: "WhatsApp Pre-fill Message"
+            name: "whatsapp_message"
             widget: "text"
+            hint: "Message that auto-fills when someone taps WhatsApp"
+
+      # ─── CTA SECTION ────────────────────────────────────────────────────────
+      - name: "cta"
+        label: "📣 Call to Action Section"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "CTA Heading"
+            name: "cta_heading"
+            widget: "string"
+            hint: "e.g. READY TO UNDERSTAND YOUR BODY?"
+
+          - label: "CTA Description"
+            name: "cta_lead"
+            widget: "text"
+            hint: "Short paragraph under the CTA heading"
+
+      # ─── SEO & SOCIAL ────────────────────────────────────────────────────────
+      - name: "seo"
+        label: "🔍 SEO & Social Preview"
+        file: "content/site.json"
+        format: json
+        fields:
+          - label: "Page title (browser tab + WhatsApp/Facebook preview)"
+            name: "seo_title"
+            widget: "string"
+            hint: "e.g. What's My Glucose – Dr. Janny Myburg"
+
+          - label: "Meta description (shown in Google + social previews)"
+            name: "seo_description"
+            widget: "text"
+            hint: "Keep under 160 characters for best results"
+
+          - label: "Social preview image"
+            name: "seo_og_image"
+            widget: "image"
+            hint: "Image shown when sharing the link on WhatsApp, Facebook, etc. — 1200×630px recommended"
