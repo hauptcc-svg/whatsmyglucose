@@ -27,30 +27,103 @@ collections:
             hint: "Message that auto-fills when someone taps the WhatsApp button"
 
       - name: "group"
-        label: "June/Next Group Programme"
+        label: "Group Programme (changes monthly)"
         file: "content/site.json"
         format: json
         fields:
           - label: "Group Month & Year"
             name: "group_month"
             widget: "string"
-            hint: "e.g. June 2026 — appears in headings and the CTA section"
+            hint: "e.g. June 2026 — appears in headings and buttons"
 
-          - label: "Group Availability Line"
+          - label: "Status Badge (top of card)"
+            name: "group_status_badge"
+            widget: "string"
+            hint: "e.g. Starting Soon  |  Now Open  |  Waitlist Only"
+
+          - label: "Card Title"
+            name: "group_card_title"
+            widget: "string"
+            hint: "e.g. JUNE 2026 GROUP"
+
+          - label: "Availability Line"
             name: "group_availability"
             widget: "string"
             hint: "e.g. Limited spaces — applications open now"
+
+          - label: "Left-side description"
+            name: "group_left_desc"
+            widget: "text"
+            hint: "Short paragraph shown on the left side of the group section"
+
+          - label: "Left-side bullet points"
+            name: "group_left_bullets"
+            widget: "list"
+            hint: "Tick-list shown on the left side of the group section"
+            field:
+              label: "Bullet"
+              name: "bullet"
+              widget: "string"
+
+          - label: "Card intro sentence"
+            name: "group_intro"
+            widget: "string"
+            hint: "Short line shown above the includes list inside the card"
+
+          - label: "What's included (card list)"
+            name: "group_includes"
+            widget: "list"
+            hint: "Items shown inside the package card"
+            field:
+              label: "Item"
+              name: "item"
+              widget: "string"
+
+          - label: "Price"
+            name: "group_price"
+            widget: "string"
+            hint: "e.g. R500"
+
+          - label: "Price note"
+            name: "group_price_note"
+            widget: "text"
+            hint: "Small text under the price (use \\n for line breaks)"
+
+          - label: "Urgency title (calendar box)"
+            name: "group_urgency_title"
+            widget: "string"
+            hint: "e.g. Applications now open"
+
+          - label: "Urgency subtitle"
+            name: "group_urgency_sub"
+            widget: "string"
+            hint: "e.g. Small cohort — spaces fill quickly. Secure yours early."
 
           - label: "Applications Open?"
             name: "applications_open"
             widget: "boolean"
             default: true
-            hint: "Toggle off to hide the 'Apply Now' button and show 'Join waitlist'"
+            hint: "Toggle OFF to swap the Apply button for a Join Waitlist button"
 
-          - label: "Group Description"
+          - label: "Apply / Join button URL"
+            name: "group_apply_url"
+            widget: "string"
+            hint: "MailerLite form URL for the Apply (or Waitlist) button"
+
+          - label: "Apply button text"
+            name: "group_apply_btn_text"
+            widget: "string"
+            hint: "e.g. Apply for the June Group →"
+
+          - label: "Join button text (left side)"
+            name: "group_join_btn_text"
+            widget: "string"
+            hint: "e.g. Join the June Group →"
+
+          - label: "Group description (used internally / CTA section)"
             name: "group_description"
             widget: "text"
-            hint: "Short paragraph shown in the package section"
+            hint: "Longer paragraph about the group programme"
 
       - name: "about"
         label: "About Dr. Janny"
