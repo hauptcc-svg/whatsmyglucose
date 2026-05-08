@@ -1314,8 +1314,6 @@
     }
     .blog-card-body { padding: 1.1rem 1.3rem; }
 </style>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
 
   <style>
     .resources-hero {
@@ -1760,8 +1758,8 @@ updateChart('white-bread');
     .catch(function(){});
 })();
 </script>
-</body>
-</html>
+
+
 
 <script>
 // ── Load resources.json and populate the page ────────────────────────────
@@ -1789,7 +1787,7 @@ fetch('content/resources.json?v=' + Date.now())
         var stars = '';
         for (var s = 0; s < 5; s++) stars += s < Math.round(rating) ? '★' : '☆';
         var thumb = course.thumbnail
-          ? '<img src="' + course.thumbnail + '" alt="" class="course-thumb" loading="lazy" onerror="this.style.display='none'">'
+          ? '<img src="' + course.thumbnail + '" alt="" class="course-thumb" loading="lazy" onerror="this.remove()">'
           : '';
         return '<div class="course-card">' +
           thumb +
@@ -1816,7 +1814,7 @@ fetch('content/resources.json?v=' + Date.now())
     if (pg && d.pdfs && d.pdfs.length) {
       pg.innerHTML = d.pdfs.map(function(p) {
         var thumb = p.thumbnail
-          ? '<img src="' + p.thumbnail + '" alt="" class="pdf-thumb" loading="lazy" onerror="this.style.display='none'">'
+          ? '<img src="' + p.thumbnail + '" alt="" class="pdf-thumb" loading="lazy" onerror="this.remove()">'
           : '';
         return '<div class="pdf-card">' +
           thumb +
@@ -1859,7 +1857,7 @@ fetch('content/resources.json?v=' + Date.now())
             if (media && media[0] && media[0].source_url) {
               var sizes = media[0].media_details && media[0].media_details.sizes;
               var imgUrl = (sizes && (sizes.medium_large || sizes.medium) || {}).source_url || media[0].source_url;
-              imgHtml = '<img src="' + imgUrl + '" alt="" class="blog-thumb" loading="lazy" onerror="this.style.display='none'">';
+              imgHtml = '<img src="' + imgUrl + '" alt="" class="blog-thumb" loading="lazy" onerror="this.remove()">';
             }
           } catch(e) {}
           return '<div class="blog-card">' + imgHtml +
@@ -1880,7 +1878,7 @@ fetch('content/resources.json?v=' + Date.now())
             grid.innerHTML = data.items.slice(0, 6).map(function(post) {
               var date = new Date(post.pubDate).toLocaleDateString('en-ZA', {day:'numeric', month:'short', year:'numeric'});
               var excerpt = post.description ? post.description.replace(/<[^>]+>/g,'').slice(0,120) + '…' : '';
-              var imgHtml = post.thumbnail ? '<img src="' + post.thumbnail + '" alt="" class="blog-thumb" loading="lazy" onerror="this.style.display='none'">' : '';
+              var imgHtml = post.thumbnail ? '<img src="' + post.thumbnail + '" alt="" class="blog-thumb" loading="lazy" onerror="this.remove()">' : '';
               return '<div class="blog-card">' + imgHtml +
                 '<div class="blog-card-body">' +
                   '<span class="blog-date">' + date + '</span>' +
