@@ -1775,25 +1775,23 @@ fetch('content/resources.json?v=' + Date.now())
     if (hh && d.resources_hero_heading) hh.innerHTML = d.resources_hero_heading;
     if (hd && d.resources_hero_desc)    hd.textContent = d.resources_hero_desc;
 
-    // Courses heading
+    // Courses heading + Udemy link
     var ch = document.getElementById('resCourseHeading');
     if (ch && d.courses_section_heading) ch.textContent = d.courses_section_heading;
-
-    // Udemy profile link
     var ul = document.getElementById('udemyProfileLink');
     if (ul && d.udemy_profile_url) ul.href = d.udemy_profile_url;
 
-    // Course cards with thumbnails
+    // Course cards — NO reveal class (dynamically injected, observer won't pick them up)
     var cg = document.getElementById('coursesGrid');
     if (cg && d.courses && d.courses.length) {
-      cg.innerHTML = d.courses.map(function(course, i) {
+      cg.innerHTML = d.courses.map(function(course) {
         var rating = parseFloat(course.rating) || 0;
         var stars = '';
         for (var s = 0; s < 5; s++) stars += s < Math.round(rating) ? '★' : '☆';
         var thumb = course.thumbnail
-          ? '<img src="' + course.thumbnail + '" alt="' + course.title + '" class="course-thumb" loading="lazy">'
+          ? '<img src="' + course.thumbnail + '" alt="" class="course-thumb" loading="lazy" onerror="this.style.display='none'">'
           : '';
-        return '<div class="course-card reveal' + (i > 0 ? ' reveal-delay-' + i : '') + '">' +
+        return '<div class="course-card">' +
           thumb +
           '<div class="course-card-header">' +
             '<div class="course-platform-badge">Udemy</div>' +
@@ -1813,15 +1811,14 @@ fetch('content/resources.json?v=' + Date.now())
     if (ph && d.pdfs_section_heading) ph.textContent = d.pdfs_section_heading;
     if (pd && d.pdfs_section_desc)    pd.textContent = d.pdfs_section_desc;
 
-    // PDF cards with thumbnails
+    // PDF cards — NO reveal class
     var pg = document.getElementById('pdfsGrid');
     if (pg && d.pdfs && d.pdfs.length) {
-      var delays = ['', ' reveal-delay-1', ' reveal-delay-2'];
-      pg.innerHTML = d.pdfs.map(function(p, i) {
+      pg.innerHTML = d.pdfs.map(function(p) {
         var thumb = p.thumbnail
-          ? '<img src="' + p.thumbnail + '" alt="' + p.title + '" class="pdf-thumb" loading="lazy">'
+          ? '<img src="' + p.thumbnail + '" alt="" class="pdf-thumb" loading="lazy" onerror="this.style.display='none'">'
           : '';
-        return '<div class="pdf-card reveal' + delays[i % 3] + '">' +
+        return '<div class="pdf-card">' +
           thumb +
           '<div class="pdf-card-body">' +
             '<div class="pdf-card-top">' +
@@ -1845,29 +1842,27 @@ fetch('content/resources.json?v=' + Date.now())
     if (bd && d.blog_section_desc)    bd.textContent = d.blog_section_desc;
     if (bv && d.blog_url)             bv.href = d.blog_url;
 
-    // Blog posts via WordPress REST API (gives us featured images)
+    // Blog: 6 posts via WordPress REST API with featured images
     var grid = document.getElementById('blogGrid');
     var blogBase = (d.blog_url || 'https://jam4joy.com').replace(/\/$/, '');
-    fetch(blogBase + '/wp-json/wp/v2/posts?per_page=4&_embed=1')
+    fetch(blogBase + '/wp-json/wp/v2/posts?per_page=6&_embed=1')
       .then(function(r){ return r.json(); })
       .then(function(posts) {
         if (!posts || !posts.length) throw new Error('no posts');
-        grid.innerHTML = posts.slice(0, 4).map(function(post) {
+        grid.innerHTML = posts.slice(0, 6).map(function(post) {
           var date = new Date(post.date).toLocaleDateString('en-ZA', {day:'numeric', month:'short', year:'numeric'});
           var title = post.title.rendered.replace(/<[^>]+>/g, '');
-          var excerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').replace(/&#\d+;/g, '').trim().slice(0, 120) + '…';
-          // Featured image
+          var excerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').replace(/&[a-z]+;/gi, '').trim().slice(0, 120) + '…';
           var imgHtml = '';
           try {
             var media = post._embedded['wp:featuredmedia'];
             if (media && media[0] && media[0].source_url) {
               var sizes = media[0].media_details && media[0].media_details.sizes;
-              var imgUrl = (sizes && (sizes.medium_large || sizes.medium || sizes.full) || {}).source_url || media[0].source_url;
-              imgHtml = '<img src="' + imgUrl + '" alt="' + title + '" class="blog-thumb" loading="lazy">';
+              var imgUrl = (sizes && (sizes.medium_large || sizes.medium) || {}).source_url || media[0].source_url;
+              imgHtml = '<img src="' + imgUrl + '" alt="" class="blog-thumb" loading="lazy" onerror="this.style.display='none'">';
             }
           } catch(e) {}
-          return '<div class="blog-card">' +
-            imgHtml +
+          return '<div class="blog-card">' + imgHtml +
             '<div class="blog-card-body">' +
               '<span class="blog-date">' + date + '</span>' +
               '<p class="blog-title">' + title + '</p>' +
@@ -1877,16 +1872,15 @@ fetch('content/resources.json?v=' + Date.now())
         }).join('');
       })
       .catch(function() {
-        // Fallback to rss2json
         var rssUrl = d.blog_rss_url || (blogBase + '/feed');
         fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl))
           .then(function(r){ return r.json(); })
           .then(function(data) {
             if (!data.items || !data.items.length) throw new Error('no posts');
-            grid.innerHTML = data.items.slice(0, 4).map(function(post) {
+            grid.innerHTML = data.items.slice(0, 6).map(function(post) {
               var date = new Date(post.pubDate).toLocaleDateString('en-ZA', {day:'numeric', month:'short', year:'numeric'});
               var excerpt = post.description ? post.description.replace(/<[^>]+>/g,'').slice(0,120) + '…' : '';
-              var imgHtml = post.thumbnail ? '<img src="' + post.thumbnail + '" alt="' + post.title + '" class="blog-thumb" loading="lazy">' : '';
+              var imgHtml = post.thumbnail ? '<img src="' + post.thumbnail + '" alt="" class="blog-thumb" loading="lazy" onerror="this.style.display='none'">' : '';
               return '<div class="blog-card">' + imgHtml +
                 '<div class="blog-card-body">' +
                   '<span class="blog-date">' + date + '</span>' +
