@@ -242,7 +242,6 @@ collections:
             name: "seo_og_image"
             widget: "image"
             hint: "Image shown when sharing the link on WhatsApp, Facebook, etc. — 1200×630px recommended"
-"
 
       # ─── RESOURCES PAGE ─────────────────────────────────────────────────────
       - name: "resources"
@@ -349,4 +348,4 @@ collections:
           - label: "Blog RSS feed URL"
             name: "blog_rss_url"
             widget: "string"
-            hint: "e.g. htt
+            hint: "e.g. https://jam4joy.com/feed"
