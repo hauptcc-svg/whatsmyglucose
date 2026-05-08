@@ -6,7 +6,7 @@ echo "=== WhatsmyGlucose — GitHub Push ==="
 cd "$(dirname "$0")"
 
 # Clean up any stale lock files
-rm -f .git/config.lock .git/index.lock 2>/dev/null
+rm -f .git/config.lock .git/index.lock .git/HEAD.lock .git/objects/maintenance.lock 2>/dev/null
 
 # Initialise (safe to run on existing repo)
 git init -b main
