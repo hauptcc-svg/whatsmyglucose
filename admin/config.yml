@@ -2,6 +2,8 @@ backend:
   name: github
   repo: hauptcc-svg/whatsmyglucose
   branch: main
+  base_url: https://api.sveltia.app
+  auth_endpoint: auth
 
 media_folder: "images"
 public_folder: "/images"
@@ -240,3 +242,111 @@ collections:
             name: "seo_og_image"
             widget: "image"
             hint: "Image shown when sharing the link on WhatsApp, Facebook, etc. — 1200×630px recommended"
+"
+
+      # ─── RESOURCES PAGE ─────────────────────────────────────────────────────
+      - name: "resources"
+        label: "📚 Resources Page (Courses & Guides)"
+        file: "content/resources.json"
+        format: json
+        fields:
+
+          - label: "Page hero heading"
+            name: "resources_hero_heading"
+            widget: "string"
+            hint: "Big heading at top of Courses & Guides page"
+
+          - label: "Page hero description"
+            name: "resources_hero_desc"
+            widget: "text"
+            hint: "Short line under the heading"
+
+          - label: "Courses section heading"
+            name: "courses_section_heading"
+            widget: "string"
+            default: "Online Courses"
+
+          - label: "Online Courses"
+            name: "courses"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Course title"
+                name: "title"
+                widget: "string"
+              - label: "Star rating"
+                name: "rating"
+                widget: "string"
+                hint: "e.g. 4.9"
+              - label: "Course description"
+                name: "description"
+                widget: "text"
+              - label: "Udemy URL"
+                name: "url"
+                widget: "string"
+              - label: "Thumbnail image URL"
+                name: "thumbnail"
+                widget: "string"
+                required: false
+                hint: "Paste the Udemy course image URL (or leave blank)"
+
+          - label: "Udemy profile URL (View all courses link)"
+            name: "udemy_profile_url"
+            widget: "string"
+            hint: "https://www.udemy.com/user/janny-myburg/"
+
+          - label: "PDFs section heading"
+            name: "pdfs_section_heading"
+            widget: "string"
+            default: "Medical Guides & PDFs"
+
+          - label: "PDFs section description"
+            name: "pdfs_section_desc"
+            widget: "text"
+            hint: "Intro text above the PDF cards"
+
+          - label: "PDF Guides"
+            name: "pdfs"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.price}}"
+            fields:
+              - label: "Guide title"
+                name: "title"
+                widget: "string"
+              - label: "Price"
+                name: "price"
+                widget: "string"
+                hint: "e.g. R50 or R99"
+              - label: "Pay what you want?"
+                name: "pwyw"
+                widget: "boolean"
+                default: false
+                hint: "Shows 'Pay what you want' below the price badge"
+              - label: "Gumroad URL"
+                name: "url"
+                widget: "string"
+                hint: "e.g. https://jannyburg.gumroad.com/l/knmcim"
+              - label: "Cover image URL"
+                name: "thumbnail"
+                widget: "string"
+                required: false
+                hint: "Paste the Gumroad product cover image URL (or leave blank)"
+
+          - label: "Blog section heading"
+            name: "blog_section_heading"
+            widget: "string"
+            default: "From the Blog"
+
+          - label: "Blog section description"
+            name: "blog_section_desc"
+            widget: "text"
+
+          - label: "Blog website URL (Visit the Blog button)"
+            name: "blog_url"
+            widget: "string"
+            hint: "e.g. https://jam4joy.com"
+
+          - label: "Blog RSS feed URL"
+            name: "blog_rss_url"
+            widget: "string"
+            hint: "e.g. htt

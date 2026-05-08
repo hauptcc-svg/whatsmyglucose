@@ -1,0 +1,79 @@
+{
+  "resources_hero_heading": "COURSES &amp; GUIDES",
+  "resources_hero_desc": "Everything you need to understand your glucose, your body, and your health — at your own pace.",
+  "courses_section_heading": "Online Courses",
+  "courses": [
+    {
+      "title": "What's My Glucose? Blood Sugar & Prediabetes Guide",
+      "rating": "4.9",
+      "description": "Learn how to read your CGM and understand how food, movement, sleep, and stress affect your blood sugar in real time. Practical, evidence-based, and designed to help you take control — not follow rigid rules.",
+      "url": "https://www.udemy.com/course/whats-my-glucose-blood-sugar-prediabetes-guide/",
+      "thumbnail": "https://img-c.udemycdn.com/course/480x270/7127839_6d17_2.jpg"
+    },
+    {
+      "title": "Rewrite Your Sugar Story: From Autopilot to Conscious Eating",
+      "rating": "4.5",
+      "description": "Most people know what they \"should\" eat — yet still feel stuck with cravings and guilt. This course explores the psychology, habits, and emotions behind your relationship with sugar so any change you make is realistic and kind.",
+      "url": "https://www.udemy.com/course/rewrite-your-sugar-story-from-autopilot-to-conscious-eating/",
+      "thumbnail": "https://img-c.udemycdn.com/course/480x270/6783363_2732_3.jpg"
+    }
+  ],
+  "udemy_profile_url": "https://www.udemy.com/user/janny-myburg/",
+  "pdfs_section_heading": "Medical Guides & PDFs",
+  "pdfs_section_desc": "Short, practical guides written by Dr. Janny — straight medical knowledge without the jargon. Download instantly and keep forever.",
+  "pdfs": [
+    {
+      "title": "How to Read Your CGM Curve",
+      "price": "R50",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/knmcim",
+      "thumbnail": "https://public-files.gumroad.com/oosofdp125ft9ror9xe8xybskr6d"
+    },
+    {
+      "title": "Diagnosing Prediabetes",
+      "price": "R50",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/aoeak",
+      "thumbnail": "https://public-files.gumroad.com/mtujbbheaczctd2i37wxxyldg539"
+    },
+    {
+      "title": "Lifestyle Changes for Prediabetics",
+      "price": "R100",
+      "pwyw": false,
+      "url": "https://jannyburg.gumroad.com/l/yxdfsl",
+      "thumbnail": "https://public-files.gumroad.com/xm6xowhynztpoj3yw42yqt2re8l2"
+    },
+    {
+      "title": "Practical Lifestyle Changes",
+      "price": "R50",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/lfpwmq",
+      "thumbnail": "https://public-files.gumroad.com/vmfvhb0yaz353fuic5iy98jhz5oo"
+    },
+    {
+      "title": "How to Sleep Better — A Practical Guide",
+      "price": "R99",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/rtggf",
+      "thumbnail": "https://public-files.gumroad.com/lhx29xgk42ssrvk01ha042r1p37r"
+    },
+    {
+      "title": "What You Need to Know Before Starting Weight Loss Medication",
+      "price": "R99",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/sbbrsi",
+      "thumbnail": "https://public-files.gumroad.com/xpnpcgy6ztpr7on6pyxzdthykcyc"
+    },
+    {
+      "title": "Understanding Low Ferritin in Children — A Simple Guide for Parents",
+      "price": "R49",
+      "pwyw": true,
+      "url": "https://jannyburg.gumroad.com/l/eigodr",
+      "thumbnail": "https://public-files.gumroad.com/56wq1guvijebdv48p1dxmm2fmtqm"
+    }
+  ],
+  "blog_section_heading": "From the Blog",
+  "blog_section_desc": "Dr. Janny writes about glucose, lifestyle, mental health, and everyday health decisions on her blog jam4joy. Latest posts below.",
+  "blog_url": "https://jam4joy.com",
+  "blog_rss_url": "https://jam4joy.com/feed"
+}

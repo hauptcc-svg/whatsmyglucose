@@ -1290,7 +1290,30 @@
       .pdfs-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
     }
     @media (max-width: 480px) { .pdfs-grid { grid-template-columns: 1fr; } }
-  </style>
+  
+    /* ── Thumbnails ────────────────────────────────────────── */
+    .course-thumb {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      display: block; border-radius: var(--radius) var(--radius) 0 0;
+      background: var(--lavender);
+    }
+    .course-card-header { border-radius: 0; }
+
+    .pdf-thumb {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      display: block; border-radius: var(--radius) var(--radius) 0 0;
+      background: var(--lavender);
+    }
+    .pdf-card { padding-top: 0; overflow: hidden; }
+    .pdf-card-body { padding: 1rem 1.25rem 0.5rem; }
+
+    .blog-thumb {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      display: block;
+      background: var(--lavender);
+    }
+    .blog-card-body { padding: 1.1rem 1.3rem; }
+</style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
 
@@ -1344,8 +1367,8 @@
 <section class="resources-hero">
   <div class="container">
     <p class="section-eyebrow" style="color:rgba(255,255,255,0.6);">Dr. Janny Myburg</p>
-    <h1>COURSES &amp;<br>GUIDES</h1>
-    <p>Everything you need to understand your glucose, your body, and your health — at your own pace.</p>
+    <h1 id="resHeroHeading">COURSES &amp;<br>GUIDES</h1>
+    <p id="resHeroDesc">Everything you need to understand your glucose, your body, and your health — at your own pace.</p>
   </div>
 </section>
 
@@ -1354,109 +1377,33 @@
   <div class="container">
 
     <!-- ONLINE COURSES -->
-    <h2 class="res-section-h">Online Courses</h2>
-    <div class="courses-grid">
-
-      <div class="course-card reveal">
-        <div class="course-card-header">
-          <div class="course-platform-badge">Udemy</div>
-          <div class="course-card-title">What&#8217;s My Glucose? Blood Sugar &amp; Prediabetes Guide</div>
-          <div class="course-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>4.9 rating</span></div>
-        </div>
-        <div class="course-card-body">
-          <p class="course-desc">Learn how to read your CGM and understand how food, movement, sleep, and stress affect your blood sugar in real time. Practical, evidence-based, and designed to help you take control — not follow rigid rules.</p>
-        </div>
-        <div class="course-card-footer">
-          <a href="https://www.udemy.com/course/whats-my-glucose-blood-sugar-prediabetes-guide/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy &#8594;</a>
-        </div>
-      </div>
-
-      <div class="course-card reveal reveal-delay-1">
-        <div class="course-card-header">
-          <div class="course-platform-badge">Udemy</div>
-          <div class="course-card-title">Rewrite Your Sugar Story: From Autopilot to Conscious Eating</div>
-          <div class="course-stars">&#9733;&#9733;&#9733;&#9733;&#9734; <span>4.5 rating</span></div>
-        </div>
-        <div class="course-card-body">
-          <p class="course-desc">Most people know what they &#8220;should&#8221; eat &#8212; yet still feel stuck with cravings and guilt. This course explores the psychology, habits, and emotions behind your relationship with sugar so any change you make is realistic and kind.</p>
-        </div>
-        <div class="course-card-footer">
-          <a href="https://www.udemy.com/course/rewrite-your-sugar-story-from-autopilot-to-conscious-eating/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy &#8594;</a>
-        </div>
-      </div>
-
+    <h2 class="res-section-h" id="resCourseHeading">Online Courses</h2>
+    <div class="courses-grid" id="coursesGrid">
+      <!-- populated by resources.json -->
     </div>
     <p style="margin-top:1.2rem;text-align:right;">
-      <a href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" style="color:var(--purple);font-size:.88rem;font-weight:600;text-decoration:none;">View all courses on Udemy &#8594;</a>
+      <a id="udemyProfileLink" href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" style="color:var(--purple);font-size:.88rem;font-weight:600;text-decoration:none;">View all courses on Udemy &#8594;</a>
     </p>
 
     <hr class="res-divider">
 
     <!-- MEDICAL GUIDES -->
-    <h2 class="res-section-h">Medical Guides &amp; PDFs</h2>
-    <p style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;">Short, practical guides written by Dr. Janny &#8212; straight medical knowledge without the jargon. Download instantly and keep forever.</p>
-    <div class="pdfs-grid">
-
-      <div class="pdf-card reveal">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
-        <p class="pdf-title">How to Read Your CGM Curve</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/knmcim" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal reveal-delay-1">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
-        <p class="pdf-title">Diagnosing Prediabetes</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/aoeak" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal reveal-delay-2">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R100</span></div>
-        <p class="pdf-title">Lifestyle Changes for Prediabetics</p>
-        <a href="https://jannyburg.gumroad.com/l/yxdfsl" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
-        <p class="pdf-title">Practical Lifestyle Changes</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/lfpwmq" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal reveal-delay-1">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R99</span></div>
-        <p class="pdf-title">How to Sleep Better &#8212; A Practical Guide</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/rtggf" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal reveal-delay-2">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R99</span></div>
-        <p class="pdf-title">What You Need to Know Before Starting Weight Loss Medication</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/sbbrsi" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
-      <div class="pdf-card reveal">
-        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R49</span></div>
-        <p class="pdf-title">Understanding Low Ferritin in Children &#8212; A Simple Guide for Parents</p>
-        <p class="pdf-pwyw">Pay what you want</p>
-        <a href="https://jannyburg.gumroad.com/l/eigodr" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
-      </div>
-
+    <h2 class="res-section-h" id="resPdfsHeading">Medical Guides &amp; PDFs</h2>
+    <p id="resPdfsDesc" style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;"></p>
+    <div class="pdfs-grid" id="pdfsGrid">
+      <!-- populated by resources.json -->
     </div>
 
     <hr class="res-divider">
 
     <!-- BLOG FEED -->
-    <h2 class="res-section-h">From the Blog</h2>
-    <p style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;">Dr. Janny writes about glucose, lifestyle, mental health, and everyday health decisions on her blog jam4joy. Latest posts below.</p>
+    <h2 class="res-section-h" id="resBlogHeading">From the Blog</h2>
+    <p id="resBlogDesc" style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;"></p>
     <div class="blog-grid" id="blogGrid">
       <p class="blog-loading">Loading latest posts&#8230;</p>
     </div>
     <p style="margin-top:1.4rem;text-align:center;">
-      <a href="https://jam4joy.com" target="_blank" rel="noopener" class="btn btn-outline">Visit the Blog &#8594;</a>
+      <a id="blogVisitLink" href="https://jam4joy.com" target="_blank" rel="noopener" class="btn btn-outline">Visit the Blog &#8594;</a>
     </p>
 
   </div>
@@ -1817,39 +1764,144 @@ updateChart('white-bread');
 </html>
 
 <script>
-// Blog feed from jam4joy via rss2json
-fetch('https://api.rss2json.com/v1/api.json?rss_url=https://jam4joy.com/feed&api_key=&count=3')
-  .then(r => r.json())
-  .then(data => {
-    const grid = document.getElementById('blogGrid');
-    if (!data.items || !data.items.length) {
-      grid.innerHTML = '<p class="blog-loading">No posts found — <a href="https://jam4joy.com" target="_blank" rel="noopener">visit the blog</a>.</p>';
-      return;
-    }
-    grid.innerHTML = data.items.slice(0,3).map(post => {
-      const date = new Date(post.pubDate).toLocaleDateString('en-ZA', {day:'numeric',month:'long',year:'numeric'});
-      const excerpt = post.description.replace(/<[^>]+>/g,'').slice(0,120) + '&#8230;';
-      return \`<div class="blog-card">
-        <div class="blog-card-body">
-          <p class="blog-date">\${date}</p>
-          <p class="blog-title">\${post.title}</p>
-          <p class="blog-excerpt">\${excerpt}</p>
-          <a href="\${post.link}" target="_blank" rel="noopener" class="blog-link">Read on jam4joy &#8594;</a>
-        </div>
-      </div>\`;
-    }).join('');
-  })
-  .catch(() => {
-    document.getElementById('blogGrid').innerHTML =
-      '<p class="blog-loading">Could not load posts. <a href="https://jam4joy.com" target="_blank" rel="noopener">Visit jam4joy.com</a>.</p>';
-  });
+// ── Load resources.json and populate the page ────────────────────────────
+fetch('content/resources.json?v=' + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(d) {
 
-// Reveal animations
-var reveals = document.querySelectorAll('.reveal');
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(function(el){ io.observe(el); });
+    // Hero
+    var hh = document.getElementById('resHeroHeading');
+    var hd = document.getElementById('resHeroDesc');
+    if (hh && d.resources_hero_heading) hh.innerHTML = d.resources_hero_heading;
+    if (hd && d.resources_hero_desc)    hd.textContent = d.resources_hero_desc;
+
+    // Courses heading
+    var ch = document.getElementById('resCourseHeading');
+    if (ch && d.courses_section_heading) ch.textContent = d.courses_section_heading;
+
+    // Udemy profile link
+    var ul = document.getElementById('udemyProfileLink');
+    if (ul && d.udemy_profile_url) ul.href = d.udemy_profile_url;
+
+    // Course cards with thumbnails
+    var cg = document.getElementById('coursesGrid');
+    if (cg && d.courses && d.courses.length) {
+      cg.innerHTML = d.courses.map(function(course, i) {
+        var rating = parseFloat(course.rating) || 0;
+        var stars = '';
+        for (var s = 0; s < 5; s++) stars += s < Math.round(rating) ? '★' : '☆';
+        var thumb = course.thumbnail
+          ? '<img src="' + course.thumbnail + '" alt="' + course.title + '" class="course-thumb" loading="lazy">'
+          : '';
+        return '<div class="course-card reveal' + (i > 0 ? ' reveal-delay-' + i : '') + '">' +
+          thumb +
+          '<div class="course-card-header">' +
+            '<div class="course-platform-badge">Udemy</div>' +
+            '<div class="course-card-title">' + course.title + '</div>' +
+            '<div class="course-stars">' + stars + ' <span>' + course.rating + ' rating</span></div>' +
+          '</div>' +
+          '<div class="course-card-body"><p class="course-desc">' + course.description + '</p></div>' +
+          '<div class="course-card-footer">' +
+            '<a href="' + course.url + '" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy →</a>' +
+          '</div></div>';
+      }).join('');
+    }
+
+    // PDFs heading + desc
+    var ph = document.getElementById('resPdfsHeading');
+    var pd = document.getElementById('resPdfsDesc');
+    if (ph && d.pdfs_section_heading) ph.textContent = d.pdfs_section_heading;
+    if (pd && d.pdfs_section_desc)    pd.textContent = d.pdfs_section_desc;
+
+    // PDF cards with thumbnails
+    var pg = document.getElementById('pdfsGrid');
+    if (pg && d.pdfs && d.pdfs.length) {
+      var delays = ['', ' reveal-delay-1', ' reveal-delay-2'];
+      pg.innerHTML = d.pdfs.map(function(p, i) {
+        var thumb = p.thumbnail
+          ? '<img src="' + p.thumbnail + '" alt="' + p.title + '" class="pdf-thumb" loading="lazy">'
+          : '';
+        return '<div class="pdf-card reveal' + delays[i % 3] + '">' +
+          thumb +
+          '<div class="pdf-card-body">' +
+            '<div class="pdf-card-top">' +
+              '<span class="pdf-icon">&#128196;</span>' +
+              '<span class="pdf-price-badge">' + p.price + '</span>' +
+            '</div>' +
+            '<p class="pdf-title">' + p.title + '</p>' +
+            (p.pwyw ? '<p class="pdf-pwyw">Pay what you want</p>' : '') +
+          '</div>' +
+          '<div style="padding:0 1.25rem 1.1rem;">' +
+            '<a href="' + p.url + '" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>' +
+          '</div></div>';
+      }).join('');
+    }
+
+    // Blog heading + desc + visit link
+    var bh = document.getElementById('resBlogHeading');
+    var bd = document.getElementById('resBlogDesc');
+    var bv = document.getElementById('blogVisitLink');
+    if (bh && d.blog_section_heading) bh.textContent = d.blog_section_heading;
+    if (bd && d.blog_section_desc)    bd.textContent = d.blog_section_desc;
+    if (bv && d.blog_url)             bv.href = d.blog_url;
+
+    // Blog posts via WordPress REST API (gives us featured images)
+    var grid = document.getElementById('blogGrid');
+    var blogBase = (d.blog_url || 'https://jam4joy.com').replace(/\/$/, '');
+    fetch(blogBase + '/wp-json/wp/v2/posts?per_page=4&_embed=1')
+      .then(function(r){ return r.json(); })
+      .then(function(posts) {
+        if (!posts || !posts.length) throw new Error('no posts');
+        grid.innerHTML = posts.slice(0, 4).map(function(post) {
+          var date = new Date(post.date).toLocaleDateString('en-ZA', {day:'numeric', month:'short', year:'numeric'});
+          var title = post.title.rendered.replace(/<[^>]+>/g, '');
+          var excerpt = post.excerpt.rendered.replace(/<[^>]+>/g, '').replace(/&#\d+;/g, '').trim().slice(0, 120) + '…';
+          // Featured image
+          var imgHtml = '';
+          try {
+            var media = post._embedded['wp:featuredmedia'];
+            if (media && media[0] && media[0].source_url) {
+              var sizes = media[0].media_details && media[0].media_details.sizes;
+              var imgUrl = (sizes && (sizes.medium_large || sizes.medium || sizes.full) || {}).source_url || media[0].source_url;
+              imgHtml = '<img src="' + imgUrl + '" alt="' + title + '" class="blog-thumb" loading="lazy">';
+            }
+          } catch(e) {}
+          return '<div class="blog-card">' +
+            imgHtml +
+            '<div class="blog-card-body">' +
+              '<span class="blog-date">' + date + '</span>' +
+              '<p class="blog-title">' + title + '</p>' +
+              '<p class="blog-excerpt">' + excerpt + '</p>' +
+              '<a href="' + post.link + '" target="_blank" rel="noopener" class="blog-link">Read on jam4joy →</a>' +
+            '</div></div>';
+        }).join('');
+      })
+      .catch(function() {
+        // Fallback to rss2json
+        var rssUrl = d.blog_rss_url || (blogBase + '/feed');
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl))
+          .then(function(r){ return r.json(); })
+          .then(function(data) {
+            if (!data.items || !data.items.length) throw new Error('no posts');
+            grid.innerHTML = data.items.slice(0, 4).map(function(post) {
+              var date = new Date(post.pubDate).toLocaleDateString('en-ZA', {day:'numeric', month:'short', year:'numeric'});
+              var excerpt = post.description ? post.description.replace(/<[^>]+>/g,'').slice(0,120) + '…' : '';
+              var imgHtml = post.thumbnail ? '<img src="' + post.thumbnail + '" alt="' + post.title + '" class="blog-thumb" loading="lazy">' : '';
+              return '<div class="blog-card">' + imgHtml +
+                '<div class="blog-card-body">' +
+                  '<span class="blog-date">' + date + '</span>' +
+                  '<p class="blog-title">' + post.title + '</p>' +
+                  (excerpt ? '<p class="blog-excerpt">' + excerpt + '</p>' : '') +
+                  '<a href="' + post.link + '" target="_blank" rel="noopener" class="blog-link">Read on jam4joy →</a>' +
+                '</div></div>';
+            }).join('');
+          })
+          .catch(function() {
+            grid.innerHTML = '<p class="blog-loading">Could not load posts — <a href="' + blogBase + '" target="_blank" rel="noopener">visit the blog</a>.</p>';
+          });
+      });
+  })
+  .catch(function(e) { console.error('resources.json load error:', e); });
 </script>
 </body>
 </html>
