@@ -2,8 +2,7 @@ backend:
   name: github
   repo: hauptcc-svg/whatsmyglucose
   branch: main
-  base_url: https://api.sveltia.app
-  auth_endpoint: auth
+  auth_type: token
 
 media_folder: "images"
 public_folder: "/images"
