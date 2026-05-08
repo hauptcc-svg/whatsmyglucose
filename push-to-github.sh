@@ -31,8 +31,8 @@ git push -u origin main --force
 if [ $? -eq 0 ]; then
   echo ""
   echo "=== Push successful! ==="
-  echo "Netlify will auto-deploy in ~60 seconds:"
-  echo "  https://whatsmyglucose.netlify.app"
+  echo "Vercel will auto-deploy in ~30 seconds:"
+  echo "  https://whatsmyglucose.vercel.app"
 else
   echo ""
   echo "Push failed. Make sure GitHub Desktop is signed in and try again."
