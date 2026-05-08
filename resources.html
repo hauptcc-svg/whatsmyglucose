@@ -1294,9 +1294,32 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
 
+  <style>
+    .resources-hero {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 100%);
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+    .resources-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4rem); color: var(--white); letter-spacing: 0.04em; line-height: 1; }
+    .resources-hero p  { color: rgba(255,255,255,0.8); font-size: 1.05rem; max-width: 520px; margin: 1rem auto 0; line-height: 1.6; }
+    .resources-body { padding: 5rem 0; background: var(--lavender-pale); }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.4rem; }
+    .blog-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(91,45,142,0.07); display:flex; flex-direction:column; transition: transform .2s, box-shadow .2s; }
+    .blog-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(91,45,142,0.13); }
+    .blog-card-body { padding: 1.3rem 1.4rem; flex:1; display:flex; flex-direction:column; gap:.6rem; }
+    .blog-date { font-size: .75rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .06em; }
+    .blog-title { font-weight: 700; font-size: .95rem; color: var(--ink); line-height: 1.35; flex:1; }
+    .blog-excerpt { font-size: .85rem; color: var(--ink-soft); line-height: 1.55; }
+    .blog-link { display:inline-flex; align-items:center; gap:.3rem; color:var(--purple); font-weight:600; font-size:.85rem; text-decoration:none; margin-top:.5rem; }
+    .blog-link:hover { text-decoration: underline; }
+    .blog-loading { color: var(--ink-faint); font-size:.9rem; padding: 1rem 0; }
+    .res-section-h { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,1.8rem); color:var(--purple); letter-spacing:.04em; margin: 3.5rem 0 1.4rem; }
+    .res-section-h:first-of-type { margin-top: 0; }
+    .res-divider { border:none; border-top:1px solid var(--lavender-mid); margin: 3.5rem 0; }
+    @media(max-width:768px){ .blog-grid { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <div class="container">
@@ -1317,494 +1340,126 @@
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero">
+
+<!-- PAGE HERO -->
+<section class="resources-hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-content reveal">
-        <span class="hero-kicker" data-cms="hero-kicker">Dr. Janny Myburg · MBChB · Diploma in Mental Health</span>
-        <h1 class="hero-h1">
-          <span class="purple">WHAT'S MY</span><br>GLUCOSE
-        </h1>
-        <span class="hero-script" data-cms="hero-script">Understand your body. Take control.</span>
-        <p class="hero-desc" data-cms="hero-desc">For people with insulin resistance, prediabetes, or wanting to lose weight — and anyone ready to understand what their blood results actually mean.</p>
-        <div class="hero-actions">
-          <a data-cms="hero-btn1" href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" class="btn btn-purple btn-lg">View Courses</a>
-          <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20glucose%20health%20consultation.%20Please%20let%20me%20know%20your%20availability." target="_blank" rel="noopener" class="btn btn-outline btn-lg">Book a Consultation</a>
-          <a href="https://jannyburg.gumroad.com/?_gl=1*fy5h1o*_ga*MTYyMTUxNTIzNy4xNzY5NjcyNTE0*_ga_6LJN6D94N6*czE3NzYzMzUxMTEkbzkkZzEkdDE3NzYzMzUzOTckajU4JGwwJGgw" target="_blank" rel="noopener" class="btn btn-dark btn-lg">Browse Resources</a>
-        </div>
-      </div>
-
-      <!-- PHONE + CGM VISUAL -->
-      <div class="hero-phone-col reveal reveal-delay-2">
-        <div class="phone-wrap">
-          <!-- info pill -->
-          <div class="hero-pill">
-            <div class="hero-pill-icon">🩺</div>
-            <div class="hero-pill-text">
-              <strong data-cms="doctor-name">Dr. Janny Myburg</strong>
-              <span>MBChB · Online Consultations</span>
-            </div>
-          </div>
-
-          <!-- phone frame -->
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="app-ui">
-                <div class="app-header">
-                  <span class="app-logo">GLUCOSE</span>
-                  <div class="app-avatar"></div>
-                </div>
-
-                <!-- live reading -->
-                <div class="glucose-card">
-                  <div class="glucose-label">Current Reading</div>
-                  <div class="glucose-reading">
-                    <div class="glucose-value" id="liveValue">5.4</div>
-                    <div class="glucose-unit">mmol/L</div>
-                  </div>
-                  <div class="glucose-status">
-                    <span class="status-dot"></span>
-                    IN RANGE
-                  </div>
-
-                  <!-- mini SVG chart -->
-                  <div class="mini-chart">
-                    <svg viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-                      <defs>
-                        <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
-                          <stop offset="0%"   stop-color="#7B4BB8"/>
-                          <stop offset="100%" stop-color="#22c55e"/>
-                        </linearGradient>
-                        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%"   stop-color="#22c55e" stop-opacity="0.3"/>
-                          <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-                        </linearGradient>
-                      </defs>
-                      <!-- ok zone band -->
-                      <rect x="0" y="20" width="260" height="38" class="zone-ok"/>
-                      <!-- area fill -->
-                      <path class="chart-area" d="M0,60 C30,58 50,45 80,42 C100,40 120,38 140,35 C160,32 180,30 200,28 C220,26 240,30 260,32 L260,80 L0,80 Z"/>
-                      <!-- line -->
-                      <path class="chart-line" d="M0,60 C30,58 50,45 80,42 C100,40 120,38 140,35 C160,32 180,30 200,28 C220,26 240,30 260,32"/>
-                      <!-- live dot -->
-                      <circle class="chart-dot" cx="260" cy="32" r="5"/>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- quick stats -->
-                <div class="app-stats">
-                  <div class="app-stat">
-                    <div class="app-stat-val">89%</div>
-                    <div class="app-stat-lbl">In Range</div>
-                  </div>
-                  <div class="app-stat">
-                    <div class="app-stat-val">6.1</div>
-                    <div class="app-stat-lbl">Avg Today</div>
-                  </div>
-                  <div class="app-stat">
-                    <div class="app-stat-val">+0.2</div>
-                    <div class="app-stat-lbl">Trend</div>
-                  </div>
-                </div>
-
-                <!-- insight -->
-                <div class="insight-card">
-                  <div class="insight-title">Dr. Janny's Insight</div>
-                  <div class="insight-text">Your glucose has stayed stable for 3 hours. Great result after this morning's meal.</div>
-                </div>
-
-                <!-- bottom nav -->
-                <div class="app-nav">
-                  <div class="app-nav-item active">
-                    <span class="app-nav-icon">📊</span>
-                    <span>Glucose</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <span class="app-nav-icon">📋</span>
-                    <span>History</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <span class="app-nav-icon">🔗</span>
-                    <span>Connect</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <span class="app-nav-icon">👤</span>
-                    <span>Profile</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CGM sensor floating below (3D) -->
-          <div class="cgm-badge">
-            <div class="cgm-device">
-              <div class="cgm-pulse"></div>
-              <div class="cgm-pulse"></div>
-              <div class="cgm-scan"></div>
-              <div class="cgm-led"></div>
-              <div class="cgm-gleam"></div>
-            </div>
-            <div class="cgm-label">Live CGM Reading</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p class="section-eyebrow" style="color:rgba(255,255,255,0.6);">Dr. Janny Myburg</p>
+    <h1>COURSES &amp;<br>GUIDES</h1>
+    <p>Everything you need to understand your glucose, your body, and your health — at your own pace.</p>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
+<!-- RESOURCES BODY -->
+<section class="resources-body">
   <div class="container">
-    <div class="trust-bar-inner">
-      <div class="trust-item"><span>🎓</span> Qualified Medical Doctor</div>
-      <div class="trust-item"><span>💻</span> Online Consultations Available</div>
-      <div class="trust-item"><span>📱</span> WhatsApp Support Included</div>
-      <div class="trust-item"><span>🌍</span> whatsmyglucose.com</div>
+
+    <!-- ONLINE COURSES -->
+    <h2 class="res-section-h">Online Courses</h2>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="course-card-header">
+          <div class="course-platform-badge">Udemy</div>
+          <div class="course-card-title">What&#8217;s My Glucose? Blood Sugar &amp; Prediabetes Guide</div>
+          <div class="course-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>4.9 rating</span></div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">Learn how to read your CGM and understand how food, movement, sleep, and stress affect your blood sugar in real time. Practical, evidence-based, and designed to help you take control — not follow rigid rules.</p>
+        </div>
+        <div class="course-card-footer">
+          <a href="https://www.udemy.com/course/whats-my-glucose-blood-sugar-prediabetes-guide/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy &#8594;</a>
+        </div>
+      </div>
+
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-card-header">
+          <div class="course-platform-badge">Udemy</div>
+          <div class="course-card-title">Rewrite Your Sugar Story: From Autopilot to Conscious Eating</div>
+          <div class="course-stars">&#9733;&#9733;&#9733;&#9733;&#9734; <span>4.5 rating</span></div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">Most people know what they &#8220;should&#8221; eat &#8212; yet still feel stuck with cravings and guilt. This course explores the psychology, habits, and emotions behind your relationship with sugar so any change you make is realistic and kind.</p>
+        </div>
+        <div class="course-card-footer">
+          <a href="https://www.udemy.com/course/rewrite-your-sugar-story-from-autopilot-to-conscious-eating/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy &#8594;</a>
+        </div>
+      </div>
+
     </div>
-  </div>
-</div>
+    <p style="margin-top:1.2rem;text-align:right;">
+      <a href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" style="color:var(--purple);font-size:.88rem;font-weight:600;text-decoration:none;">View all courses on Udemy &#8594;</a>
+    </p>
 
+    <hr class="res-divider">
 
+    <!-- MEDICAL GUIDES -->
+    <h2 class="res-section-h">Medical Guides &amp; PDFs</h2>
+    <p style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;">Short, practical guides written by Dr. Janny &#8212; straight medical knowledge without the jargon. Download instantly and keep forever.</p>
+    <div class="pdfs-grid">
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="container">
-    <div class="trust-bar-inner">
-      <div class="trust-item"><span>🎓</span> Qualified Medical Doctor</div>
-      <div class="trust-item"><span>💻</span> Online Consultations Available</div>
-      <div class="trust-item"><span>📱</span> WhatsApp Support Included</div>
-      <div class="trust-item"><span>🌍</span> whatsmyglucose.com</div>
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
+        <p class="pdf-title">How to Read Your CGM Curve</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/knmcim" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-1">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
+        <p class="pdf-title">Diagnosing Prediabetes</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/aoeak" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-2">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R100</span></div>
+        <p class="pdf-title">Lifestyle Changes for Prediabetics</p>
+        <a href="https://jannyburg.gumroad.com/l/yxdfsl" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R50</span></div>
+        <p class="pdf-title">Practical Lifestyle Changes</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/lfpwmq" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-1">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R99</span></div>
+        <p class="pdf-title">How to Sleep Better &#8212; A Practical Guide</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/rtggf" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-2">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R99</span></div>
+        <p class="pdf-title">What You Need to Know Before Starting Weight Loss Medication</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/sbbrsi" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top"><span class="pdf-icon">&#128196;</span><span class="pdf-price-badge">R49</span></div>
+        <p class="pdf-title">Understanding Low Ferritin in Children &#8212; A Simple Guide for Parents</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/l/eigodr" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad &#8594;</a>
+      </div>
+
     </div>
-  </div>
-</div>
 
+    <hr class="res-divider">
 
-<!-- ═══ GLUCOSE HEALTH QUIZ ═══ -->
-<section class="quiz-section" id="quiz">
-  <div class="container">
-    <p class="section-eyebrow reveal">Free Assessment</p>
-    <h2 class="section-h2 reveal reveal-delay-1">WHAT'S YOUR<br>GLUCOSE RISK?</h2>
-    <p class="section-lead reveal reveal-delay-2">Answer 6 quick questions and get a personalised glucose health profile — plus the right next step for you.</p>
-
-    <div class="quiz-wrap reveal reveal-delay-2">
-      <div class="quiz-progress-bar">
-        <div class="quiz-progress-fill" id="quizProgressFill"></div>
-      </div>
-
-      <div class="quiz-card">
-
-        <!-- ── QUESTION 1 ── -->
-        <div class="quiz-panel active" data-panel="0">
-          <span class="quiz-q-emoji">⚡</span>
-          <p class="quiz-q-text">How often do you hit an afternoon slump — that heavy, foggy, can't-focus feeling?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>Rarely — my energy is pretty consistent</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>A few times a week</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">C</span>Most afternoons, I need coffee or sugar</button>
-            <button class="quiz-option" data-score="3"><span class="quiz-option-marker">D</span>Every single day, it's a struggle</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="1">Next question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── QUESTION 2 ── -->
-        <div class="quiz-panel" data-panel="1">
-          <span class="quiz-q-emoji">🍫</span>
-          <p class="quiz-q-text">How strong are your cravings for sweets, bread, or carbs — especially after a meal?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>Not really — I can take or leave them</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>Occasionally, but it's manageable</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">C</span>Most days, I definitely want something sweet</button>
-            <button class="quiz-option" data-score="3"><span class="quiz-option-marker">D</span>It feels like a compulsion — very hard to resist</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="2">Next question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── QUESTION 3 ── -->
-        <div class="quiz-panel" data-panel="2">
-          <span class="quiz-q-emoji">🩺</span>
-          <p class="quiz-q-text">Has a doctor ever mentioned your blood sugar, insulin levels, or told you to "watch your diet"?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>No — all my results have been normal</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>I haven't been tested recently, I'm not sure</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">C</span>Yes — borderline or "something to watch"</button>
-            <button class="quiz-option" data-score="3"><span class="quiz-option-marker">D</span>Yes — I have a formal diagnosis or concerning results</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="3">Next question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── QUESTION 4 ── -->
-        <div class="quiz-panel" data-panel="3">
-          <span class="quiz-q-emoji">😴</span>
-          <p class="quiz-q-text">How do you feel between meals — particularly if it's been more than 3 hours since eating?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>Fine — I barely notice hunger between meals</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>A bit hungry but manageable</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">C</span>Irritable, shaky, or very hungry — I need to eat</button>
-            <button class="quiz-option" data-score="3"><span class="quiz-option-marker">D</span>I feel unwell, anxious or get brain fog without food</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="4">Next question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── QUESTION 5 ── -->
-        <div class="quiz-panel" data-panel="4">
-          <span class="quiz-q-emoji">🏃</span>
-          <p class="quiz-q-text">How active are you on a typical week?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>4 or more structured sessions per week</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>2–3 times per week — I try to be consistent</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">C</span>Once a week or irregular</button>
-            <button class="quiz-option" data-score="3"><span class="quiz-option-marker">D</span>Mostly sedentary — very little movement</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="5">Last question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── QUESTION 6 ── -->
-        <div class="quiz-panel" data-panel="5">
-          <span class="quiz-q-emoji">🎯</span>
-          <p class="quiz-q-text">What is your biggest health goal right now?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-score="0"><span class="quiz-option-marker">A</span>Just curious — I want to understand my body better</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">B</span>Improve my energy and focus</button>
-            <button class="quiz-option" data-score="1"><span class="quiz-option-marker">C</span>Lose weight or improve my body composition</button>
-            <button class="quiz-option" data-score="2"><span class="quiz-option-marker">D</span>Manage or reverse a health condition</button>
-          </div>
-          <div class="quiz-next-wrap">
-            <button class="quiz-next" data-next="result">See my results <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-
-        <!-- ── RESULTS ── -->
-        <div class="quiz-result-panel" id="quizResults">
-
-          <!-- Profile: Stable (score 0–5) -->
-          <div class="quiz-result-content" id="resultStable" style="display:none">
-            <span class="result-badge green">● Glucose Stable</span>
-            <h3 class="result-heading">YOU'RE IN A<br>GOOD PLACE</h3>
-            <p class="result-sub">Your answers suggest your glucose is reasonably well-managed. You're not showing the classic warning signs — but understanding your glucose deeply means you can <em>stay</em> in this position for life.</p>
-            <div class="result-meter-wrap">
-              <div class="result-meter-label"><span>Your glucose risk</span><span>Low</span></div>
-              <div class="result-meter-track"><div class="result-meter-fill green" data-width="22%"></div></div>
-            </div>
-            <div class="result-findings">
-              <h4>What this means for you</h4>
-              <ul>
-                <li>Your body is handling glucose reasonably well right now</li>
-                <li>Building knowledge early prevents future problems</li>
-                <li>Learning what foods affect your personal glucose response is still valuable</li>
-              </ul>
-            </div>
-            <div class="result-ctas">
-              <a href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" class="result-cta-primary">Start Free on Udemy →</a>
-              <a href="https://preview.mailerlite.io/forms/2264283/184988340041286757/share" target="_blank" rel="noopener" class="result-cta-secondary">Find Out More</a>
-            </div>
-            <button class="quiz-restart" id="restartStable">← Retake the quiz</button>
-            <div class="result-dr-note">
-              <strong>A note from Dr. Janny:</strong> Even people without obvious symptoms often benefit from knowing their glucose patterns. A CGM assessment can give you a personalised baseline — and peace of mind.
-            </div>
-          </div>
-
-          <!-- Profile: Worth Watching (score 6–11) -->
-          <div class="quiz-result-content" id="resultWatching" style="display:none">
-            <span class="result-badge amber">● Worth Watching</span>
-            <h3 class="result-heading">EARLY SIGNS<br>TO ADDRESS</h3>
-            <p class="result-sub">Your answers point to some common early signs of glucose imbalance — cravings, energy dips, or symptoms after meals. These are your body's way of asking for attention. The good news: addressed early, these are very manageable.</p>
-            <div class="result-meter-wrap">
-              <div class="result-meter-label"><span>Your glucose risk</span><span>Moderate</span></div>
-              <div class="result-meter-track"><div class="result-meter-fill amber" data-width="55%"></div></div>
-            </div>
-            <div class="result-findings">
-              <h4>What your symptoms may indicate</h4>
-              <ul>
-                <li>Post-meal glucose spikes causing energy crashes</li>
-                <li>Possible early insulin resistance worth investigating</li>
-                <li>Food choices and timing may be driving your symptoms</li>
-              </ul>
-            </div>
-            <div class="result-ctas">
-              <a href="https://preview.mailerlite.io/forms/2264283/184988340041286757/share" target="_blank" rel="noopener" class="result-cta-primary">Get Dr. Janny's Free Guide →</a>
-              <a href="https://www.udemy.com/user/janny-myburg/" target="_blank" rel="noopener" class="result-cta-secondary">Udemy Course</a>
-            </div>
-            <button class="quiz-restart" id="restartWatching">← Retake the quiz</button>
-            <div class="result-dr-note">
-              <strong>A note from Dr. Janny:</strong> These patterns are very common — and very fixable. Understanding exactly <em>how</em> your glucose behaves is the first step. I'd love to show you what's possible.
-            </div>
-          </div>
-
-          <!-- Profile: Take Action (score 12+) -->
-          <div class="quiz-result-content" id="resultAction" style="display:none">
-            <span class="result-badge red">● Take Action</span>
-            <h3 class="result-heading">TIME TO<br>GET CLARITY</h3>
-            <p class="result-sub">Your answers suggest multiple signs of glucose dysregulation. This isn't a reason to panic — it's a reason to get the right information. Understanding what's happening in your body is the first step to changing it.</p>
-            <div class="result-meter-wrap">
-              <div class="result-meter-label"><span>Your glucose risk</span><span>Higher Priority</span></div>
-              <div class="result-meter-track"><div class="result-meter-fill red" data-width="82%"></div></div>
-            </div>
-            <div class="result-findings">
-              <h4>What your symptoms suggest</h4>
-              <ul>
-                <li>Likely significant glucose variability affecting your daily life</li>
-                <li>Possible insulin resistance or impaired glucose response</li>
-                <li>You would benefit from proper medical review and a CGM assessment</li>
-              </ul>
-            </div>
-            <div class="result-ctas">
-              <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%20just%20completed%20the%20glucose%20quiz%20on%20your%20website%20and%20my%20results%20suggest%20I%20should%20take%20action.%20I%27d%20love%20to%20book%20a%20consultation%20to%20discuss%20my%20situation." target="_blank" rel="noopener" class="result-cta-primary">Chat with Dr. Janny on WhatsApp →</a>
-              <a href="https://preview.mailerlite.io/forms/2264283/184920955714275229/share" target="_blank" rel="noopener" class="result-cta-secondary">Join the June Group</a>
-            </div>
-            <button class="quiz-restart" id="restartAction">← Retake the quiz</button>
-            <div class="result-dr-note">
-              <strong>A note from Dr. Janny:</strong> I see these patterns regularly — and people are always surprised how quickly things improve once they understand what's driving them. Let's talk about your specific situation.
-            </div>
-          </div>
-
-        </div><!-- /quizResults -->
-      </div><!-- /quiz-card -->
-    </div><!-- /quiz-wrap -->
-  </div>
-</section>
-
-
-<!-- ═══ PACKAGE ═══ -->
-<section class="package-section" id="packages">
-  <div class="container">
-    <div class="package-grid">
-      <div class="package-left">
-        <p class="section-eyebrow">Group Learning</p>
-        <h2 class="section-h2" data-cms="group-heading">JUNE 2026<br>GROUP</h2>
-        <p data-cms="group-left-desc" style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:2rem;font-size:0.98rem;">The June 2026 group programme brings together a small cohort of participants for a structured glucose health experience — with Dr. Janny guiding the group through the process.</p>
-        <ul data-cms="group-left-bullets" style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:0.5rem;">
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> 4-week structured programme</li>
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> CGM monitoring period included</li>
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> Weekly group sessions with Dr. Janny</li>
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> Personalised data review</li>
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> Meal and lifestyle guidance</li>
-          <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> Community support throughout</li>
-        </ul>
-        <a data-cms="group-join-btn" href="https://preview.mailerlite.io/forms/2264283/184920955714275229/share" target="_blank" rel="noopener" class="btn" style="background:var(--white);color:var(--purple-dark);margin-top:2rem;display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;border-radius:99px;font-weight:700;font-size:0.95rem;">Join the June Group →</a>
-      </div>
-      <div class="package-right">
-        <div class="package-card">
-          <div class="package-card-head">
-            <p data-cms="group-status-badge" style="font-size:0.68rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:0.4rem;">Starting Soon</p>
-            <h3 data-cms="group-card-title">JUNE 2026 GROUP</h3>
-            <p data-cms="group-availability">Limited spaces — applications open now</p>
-          </div>
-          <div class="package-card-body">
-            <p data-cms="group-intro" style="font-size:0.93rem;color:var(--ink-soft);line-height:1.75;margin-bottom:1.25rem;">Learn together, ask questions, and apply what you learn in real life.</p>
-            <ul class="include-list" data-cms="group-includes">
-              <li><span class="check">✓</span><span>Full access to the What's My Glucose Udemy course (voucher included)</span></li>
-              <li><span class="check">✓</span><span>2 live group webinars (Tuesday evenings, 7pm–8pm) — real examples &amp; practical steps</span></li>
-              <li><span class="check">✓</span><span>WhatsApp group access for support, questions, and shared learning</span></li>
-              <li><span class="check">✓</span><span>Go through the course at your own pace — sessions are short and fit a busy schedule</span></li>
-            </ul>
-            <div class="pkg-price-row" style="margin:1.5rem 0 0.5rem;">
-              <p class="pkg-price-amount" data-cms="group-price">R500</p>
-              <div class="pkg-price-note" data-cms="group-price-note">per person<br/>CGM optional — recommended for a more personal experience.<br/>Participants purchase their own CGM if they choose to use one.</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:0.75rem;background:var(--lavender-pale);border:1px solid var(--lavender-mid);border-radius:var(--radius);padding:1rem 1.1rem;margin:1.25rem 0;">
-              <span style="font-size:1.4rem;">📅</span>
-              <div>
-                <p data-cms="group-urgency-title" style="font-size:0.82rem;font-weight:700;color:var(--purple-dark);margin-bottom:0.1rem;">Applications now open</p>
-                <p data-cms="group-urgency-sub" style="font-size:0.78rem;color:var(--ink-soft);">Small cohort — spaces fill quickly. Secure yours early.</p>
-              </div>
-            </div>
-            <a data-cms="group-apply-btn" href="https://preview.mailerlite.io/forms/2264283/184920955714275229/share" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;display:flex;font-size:1rem;padding:1rem 1.5rem;">Apply for the June Group →</a>
-            <p class="pkg-note-small" style="text-align:center;margin-top:0.75rem;">Questions first? <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20glucose%20health%20consultation.%20Please%20let%20me%20know%20your%20availability." style="color:var(--purple);font-weight:600;">Chat with Dr. Janny →</a></p>
-          </div>
-        </div>
-      </div>
+    <!-- BLOG FEED -->
+    <h2 class="res-section-h">From the Blog</h2>
+    <p style="color:var(--ink-soft);font-size:.95rem;margin-bottom:1.8rem;max-width:560px;">Dr. Janny writes about glucose, lifestyle, mental health, and everyday health decisions on her blog jam4joy. Latest posts below.</p>
+    <div class="blog-grid" id="blogGrid">
+      <p class="blog-loading">Loading latest posts&#8230;</p>
     </div>
-  </div>
-</section>
+    <p style="margin-top:1.4rem;text-align:center;">
+      <a href="https://jam4joy.com" target="_blank" rel="noopener" class="btn btn-outline">Visit the Blog &#8594;</a>
+    </p>
 
-
-
-
-<!-- ═══ ABOUT DR. JANNY ═══ -->
-<section class="about-section" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-images reveal">
-        <div class="about-img-main">
-          <img data-cms="doctor-photo" src="images/dr-janny.jpg" alt="Dr. Janny Myburg" loading="lazy" />
-        </div>
-        <div class="about-cred-card">
-          <strong data-cms="doctor-name">Dr. Janny Myburg</strong>
-          <small data-cms="doctor-credentials">MBChB · Diploma in Mental Health</small>
-        </div>
-      </div>
-      <div class="about-text">
-        <p class="section-eyebrow">About Dr. Janny</p>
-        <h2 class="section-h2">MEET<br>DR. JANNY</h2>
-        <p data-cms="bio-p1" style="font-size:1rem;line-height:1.8;color:var(--ink-soft);margin-bottom:1rem;">Dr. Janny Myburg (MBChB, Diploma in Mental Health) is a medical doctor with a passion for making complex health information genuinely accessible.</p>
-        <p data-cms="bio-p2" style="font-size:1rem;line-height:1.8;color:var(--ink-soft);margin-bottom:1rem;">After years of clinical practice, she recognised a pattern: patients were leaving consultations with results they didn't understand and no practical guidance on what to do next. Glucose health was a recurring blind spot — one with enormous consequences for energy, weight, mental clarity, and long-term disease risk.</p>
-        <p style="font-size:1rem;line-height:1.8;color:var(--ink-soft);margin-bottom:1rem;">I offer online consultations where we can look at your blood results, talk through weight concerns, and review your glucose readings together. The focus is on helping you understand your body and finding simple, realistic steps that feel doable in your daily life.</p>
-        <p style="font-size:1rem;line-height:1.8;color:var(--ink-soft);margin-bottom:1.75rem;">I can also guide you on whether medication may be appropriate for you.</p>
-        <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20glucose%20health%20consultation.%20Please%20let%20me%20know%20your%20availability." target="_blank" rel="noopener" class="btn btn-primary">Chat with Dr. Janny →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ WHAT WE OFFER ═══ -->
-<section class="offer-section" style="padding:4rem 0;">
-  <div class="container">
-    <p class="section-eyebrow reveal">How to Work With Dr. Janny</p>
-    <h2 class="section-h2 reveal reveal-delay-1">THREE WAYS<br>TO GET STARTED</h2>
-    <div class="offer-list" style="max-width:680px;margin:2.5rem auto 0;">
-      <div class="offer-item reveal">
-        <span class="offer-num">01</span>
-        <div class="offer-body">
-          <h3>Courses, PDFs &amp; Guides</h3>
-          <p>Self-paced learning — from understanding your CGM to lifestyle changes for prediabetes. Browse all courses and downloadable guides.</p>
-          <a href="resources.html" class="offer-link">Browse resources &rarr;</a>
-        </div>
-      </div>
-      <div class="offer-item reveal reveal-delay-1">
-        <span class="offer-num">02</span>
-        <div class="offer-body">
-          <h3>Join the Monthly Glucose Group</h3>
-          <p>A small cohort of people learning together with Dr. Janny. Limited spaces each month — the most supported way to make real change.</p>
-          <a href="#packages" class="offer-link">See the June group &rarr;</a>
-        </div>
-      </div>
-      <div class="offer-item reveal reveal-delay-2">
-        <span class="offer-num">03</span>
-        <div class="offer-body">
-          <h3>Personal Consultation</h3>
-          <p>A one-on-one session with Dr. Janny to review your results and build a personalised plan. Limited slots available each week.</p>
-          <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20consultation." target="_blank" rel="noopener" class="offer-link">Book via WhatsApp &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FINAL CTA ═══ -->
-<section class="cta-section">
-  <div class="container" style="text-align:center;">
-    <p class="section-eyebrow reveal">Get Started</p>
-    <h2 class="section-h2 reveal reveal-delay-1" data-cms="cta-heading">READY TO UNDERSTAND<br>YOUR BODY?</h2>
-    <p class="section-lead reveal reveal-delay-2" data-cms="cta-lead" style="margin:0 auto 2.5rem;">Start with a course, book a personal consultation, or join the June 2026 group — all designed to make complex medical information simple and actionable.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="#quiz" class="btn btn-primary reveal">Take the Free Quiz →</a>
-      <a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20glucose%20health%20consultation.%20Please%20let%20me%20know%20your%20availability." target="_blank" rel="noopener" class="btn btn-outline reveal reveal-delay-1">WhatsApp Dr. Janny</a>
-    </div>
   </div>
 </section>
 
@@ -2158,6 +1813,44 @@ updateChart('white-bread');
     })
     .catch(function(){});
 })();
+</script>
+</body>
+</html>
+
+<script>
+// Blog feed from jam4joy via rss2json
+fetch('https://api.rss2json.com/v1/api.json?rss_url=https://jam4joy.com/feed&api_key=&count=3')
+  .then(r => r.json())
+  .then(data => {
+    const grid = document.getElementById('blogGrid');
+    if (!data.items || !data.items.length) {
+      grid.innerHTML = '<p class="blog-loading">No posts found — <a href="https://jam4joy.com" target="_blank" rel="noopener">visit the blog</a>.</p>';
+      return;
+    }
+    grid.innerHTML = data.items.slice(0,3).map(post => {
+      const date = new Date(post.pubDate).toLocaleDateString('en-ZA', {day:'numeric',month:'long',year:'numeric'});
+      const excerpt = post.description.replace(/<[^>]+>/g,'').slice(0,120) + '&#8230;';
+      return \`<div class="blog-card">
+        <div class="blog-card-body">
+          <p class="blog-date">\${date}</p>
+          <p class="blog-title">\${post.title}</p>
+          <p class="blog-excerpt">\${excerpt}</p>
+          <a href="\${post.link}" target="_blank" rel="noopener" class="blog-link">Read on jam4joy &#8594;</a>
+        </div>
+      </div>\`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('blogGrid').innerHTML =
+      '<p class="blog-loading">Could not load posts. <a href="https://jam4joy.com" target="_blank" rel="noopener">Visit jam4joy.com</a>.</p>';
+  });
+
+// Reveal animations
+var reveals = document.querySelectorAll('.reveal');
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+reveals.forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
