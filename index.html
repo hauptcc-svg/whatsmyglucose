@@ -1157,6 +1157,146 @@
       .result-ctas { flex-direction: column; }
       .result-cta-primary, .result-cta-secondary { justify-content: center; }
     }
+
+    /* ── RESOURCES SECTION ──────────────────────────────────────────────── */
+    .resources-section { padding: 6rem 0; background: var(--lavender-pale); }
+    .resources-sub-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      color: var(--purple);
+      letter-spacing: 0.04em;
+      margin: 3rem 0 1.4rem;
+    }
+    .resources-sub-heading:first-of-type { margin-top: 0; }
+    .resources-divider {
+      border: none;
+      border-top: 1px solid var(--lavender-mid);
+      margin: 3rem 0;
+    }
+
+    /* Course cards */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(91,45,142,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(91,45,142,0.15); }
+    .course-card-header {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
+      padding: 1.5rem 1.5rem 1.2rem;
+    }
+    .course-platform-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .course-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+    .course-stars {
+      margin-top: 0.6rem;
+      color: #f59e0b;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .course-stars span { color: rgba(255,255,255,0.75); font-size: 0.78rem; }
+    .course-card-body { padding: 1.4rem 1.5rem; flex: 1; }
+    .course-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.65; }
+    .course-card-footer { padding: 0 1.5rem 1.5rem; }
+    .btn-udemy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--purple);
+      color: var(--white);
+      padding: 0.75rem 1.3rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-udemy:hover { background: var(--purple-dark); }
+
+    /* PDF cards */
+    .pdfs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .pdf-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 2px 12px rgba(91,45,142,0.07);
+      border-left: 4px solid var(--purple-mid);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pdf-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(91,45,142,0.13); }
+    .pdf-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+    .pdf-icon { font-size: 1.4rem; line-height: 1; }
+    .pdf-price-badge {
+      background: var(--lavender);
+      color: var(--purple);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pdf-title { font-weight: 700; font-size: 0.92rem; color: var(--ink); line-height: 1.35; flex: 1; }
+    .pdf-pwyw { font-size: 0.75rem; color: var(--ink-faint); font-style: italic; }
+    .btn-gumroad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: var(--purple);
+      border: 1.5px solid var(--purple-mid);
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-decoration: none;
+      margin-top: auto;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-gumroad:hover { background: var(--purple); color: var(--white); border-color: var(--purple); }
+
+    @media (max-width: 768px) {
+      .courses-grid { grid-template-columns: 1fr; }
+      .pdfs-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .pdfs-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
@@ -1174,7 +1314,7 @@
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#quiz">Free Quiz</a></li>
         <li><a href="#packages">June Group</a></li>
-        <li><a href="https://www.udemy.com/user/janny-myburg/?srsltid=AfmBOorroMPx8p0psNfBGergqsy1VEPtCV-ZlTlJXK6EX9zAiOkpLj4I" target="_blank" rel="noopener">Courses</a></li>
+        <li><a href="#resources">Courses &amp; Guides</a></li>
         <li><a href="https://wa.me/27825332623?text=Hi%20Dr.%20Janny!%20I%27d%20like%20to%20book%20a%20glucose%20health%20consultation.%20Please%20let%20me%20know%20your%20availability." target="_blank" rel="noopener" class="cta-link">Book Consultation</a></li>
       </ul>
       <button class="burger" id="burger" aria-label="Open menu">
@@ -1664,6 +1804,127 @@
   </div>
 </section>
 
+<!-- ═══ RESOURCES ═══ -->
+<section class="resources-section" id="resources">
+  <div class="container">
+    <p class="section-eyebrow reveal">Courses &amp; Guides</p>
+    <h2 class="section-h2 reveal reveal-delay-1">LEARN AT YOUR<br>OWN PACE</h2>
+    <p class="section-lead reveal reveal-delay-2">Everything Dr. Janny has created to help you understand your glucose, your body, and your health — available whenever you're ready.</p>
+
+    <!-- ONLINE COURSES -->
+    <h3 class="resources-sub-heading reveal">Online Courses</h3>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="course-card-header">
+          <div class="course-platform-badge">Udemy</div>
+          <div class="course-card-title">What's My Glucose? Blood Sugar &amp; Prediabetes Guide</div>
+          <div class="course-stars">★★★★★ <span>4.9 rating</span></div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">Learn how to read your CGM and understand how food, movement, sleep, and stress affect your blood sugar in real time. Practical, evidence-based, and designed to help you take control — not follow rigid rules.</p>
+        </div>
+        <div class="course-card-footer">
+          <a href="https://www.udemy.com/course/whats-my-glucose-blood-sugar-prediabetes-guide/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy →</a>
+        </div>
+      </div>
+
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-card-header">
+          <div class="course-platform-badge">Udemy</div>
+          <div class="course-card-title">Rewrite Your Sugar Story: From Autopilot to Conscious Eating</div>
+          <div class="course-stars">★★★★½ <span>4.5 rating</span></div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">Most people know what they "should" eat — yet still feel stuck with cravings and guilt. This course explores the psychology, habits, and emotions behind your relationship with sugar so any change you make is realistic and kind.</p>
+        </div>
+        <div class="course-card-footer">
+          <a href="https://www.udemy.com/course/rewrite-your-sugar-story-from-autopilot-to-conscious-eating/" target="_blank" rel="noopener" class="btn-udemy">Enroll on Udemy →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="resources-divider">
+
+    <!-- MEDICAL GUIDES -->
+    <h3 class="resources-sub-heading reveal">Medical Guides &amp; PDFs</h3>
+    <p class="reveal" style="color:var(--ink-soft);font-size:0.95rem;margin-bottom:1.8rem;max-width:560px;">Short, practical guides written by Dr. Janny — straight medical knowledge without the jargon. Download instantly and keep forever.</p>
+    <div class="pdfs-grid">
+
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R50</span>
+        </div>
+        <p class="pdf-title">How to Read Your CGM Curve</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-1">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R50</span>
+        </div>
+        <p class="pdf-title">Diagnosing Prediabetes</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-2">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R100</span>
+        </div>
+        <p class="pdf-title">Lifestyle Changes for Prediabetics</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R50</span>
+        </div>
+        <p class="pdf-title">Practical Lifestyle Changes</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-1">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R99</span>
+        </div>
+        <p class="pdf-title">How to Sleep Better — A Practical Guide</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal reveal-delay-2">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R99</span>
+        </div>
+        <p class="pdf-title">What You Need to Know Before Starting Weight Loss Medication</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+      <div class="pdf-card reveal">
+        <div class="pdf-card-top">
+          <span class="pdf-icon">📄</span>
+          <span class="pdf-price-badge">R49</span>
+        </div>
+        <p class="pdf-title">Understanding Low Ferritin in Children — A Simple Guide for Parents</p>
+        <p class="pdf-pwyw">Pay what you want</p>
+        <a href="https://jannyburg.gumroad.com/" target="_blank" rel="noopener" class="btn-gumroad">Get it on Gumroad →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══ ABOUT DR. JANNY ═══ -->
 <section class="about-section" id="about">
   <div class="container">
@@ -1976,182 +2237,4 @@ document.getElementById('foodToggle').addEventListener('click', (e) => {
 
 updateChart('white-bread');
 
-/* ── Glucose Health Quiz ──────────────────────── */
-(function() {
-  var TOTAL = 6, scores = [];
-  var fill = document.getElementById('quizProgressFill');
-  function setProgress(i) { if (fill) fill.style.width = Math.round(i/TOTAL*100)+'%'; }
-  function showPanel(i) {
-    document.querySelectorAll('.quiz-panel').forEach(function(p){ p.classList.remove('active'); });
-    var t = document.querySelector('.quiz-panel[data-panel="'+i+'"]');
-    if (t) t.classList.add('active');
-    setProgress(i);
-  }
-  function showResults(total) {
-    document.querySelectorAll('.quiz-panel').forEach(function(p){ p.classList.remove('active'); });
-    var r = document.getElementById('quizResults');
-    if (r) r.classList.add('active');
-    setProgress(TOTAL);
-    var id = total<=5 ? 'resultStable' : total<=11 ? 'resultWatching' : 'resultAction';
-    ['resultStable','resultWatching','resultAction'].forEach(function(n){
-      var el=document.getElementById(n); if(el) el.style.display=n===id?'block':'none';
-    });
-    setTimeout(function(){
-      var f=r?r.querySelector('.result-meter-fill'):null;
-      if(f) f.style.width=f.dataset.width||'50%';
-    },100);
-  }
-  function reset() {
-    scores=[];
-    document.querySelectorAll('.quiz-option').forEach(function(o){o.classList.remove('selected');});
-    document.querySelectorAll('.quiz-next').forEach(function(b){b.classList.remove('visible');});
-    var r=document.getElementById('quizResults'); if(r) r.classList.remove('active');
-    document.querySelectorAll('.result-meter-fill').forEach(function(f){f.style.width='0%';});
-    showPanel(0);
-    var s=document.getElementById('quiz'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-  document.querySelectorAll('.quiz-panel').forEach(function(panel) {
-    var idx=parseInt(panel.dataset.panel);
-    var opts=panel.querySelectorAll('.quiz-option');
-    var nxt=panel.querySelector('.quiz-next');
-    opts.forEach(function(opt){
-      opt.addEventListener('click',function(){
-        opts.forEach(function(o){o.classList.remove('selected');});
-        opt.classList.add('selected');
-        scores[idx]=parseInt(opt.dataset.score)||0;
-        if(nxt) nxt.classList.add('visible');
-      });
-    });
-    if(nxt) nxt.addEventListener('click',function(){
-      var t=nxt.dataset.next;
-      if(t==='result'){ showResults(scores.reduce(function(a,b){return a+b;},0)); }
-      else { showPanel(parseInt(t)); }
-    });
-  });
-  ['restartStable','restartWatching','restartAction'].forEach(function(id){
-    var b=document.getElementById(id); if(b) b.addEventListener('click',reset);
-  });
-  setProgress(0);
-})();
-</script>
-
-<script>
-// Sveltia CMS content loader — fetches all section files and merges them
-(function(){
-  var files = ['hero','doctor','services','group','general','cta','seo'];
-  var ts = '?_=' + Date.now();
-  Promise.all(files.map(function(f){ return fetch('/content/'+f+'.json'+ts).then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; }); }))
-    .then(function(results){
-      var d = Object.assign.apply(Object, [{}].concat(results));
-      if(!Object.keys(d).length) return;
-      if(!d) return;
-
-      // ── Helper functions ────────────────────────────────────────────────────
-      function setText(sel, val){ if(!val) return; var el = document.querySelector(sel); if(el) el.textContent = val; }
-      function setCMS(key, val){ setText('[data-cms="'+key+'"]', val); }
-      function setHTML(key, val){ if(!val) return; var el = document.querySelector('[data-cms="'+key+'"]'); if(el) el.innerHTML = val; }
-
-      // ── WhatsApp links ──────────────────────────────────────────────────────
-      var wa = 'https://wa.me/' + d.whatsapp_number + '?text=' + encodeURIComponent(d.whatsapp_message);
-      document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){ a.href = wa; });
-
-      // ── HERO SECTION ────────────────────────────────────────────────────────
-      setCMS('hero-kicker', d.hero_kicker);
-      setCMS('hero-script', d.hero_script);
-      setCMS('hero-desc', d.hero_desc);
-      if(d.hero_btn1_url){ var b1 = document.querySelector('[data-cms="hero-btn1"]'); if(b1){ b1.href = d.hero_btn1_url; if(d.hero_btn1_text) b1.textContent = d.hero_btn1_text; } }
-
-      // ── DOCTOR PROFILE ──────────────────────────────────────────────────────
-      if(d.doctor_photo){ var img = document.querySelector('[data-cms="doctor-photo"]'); if(img) img.src = d.doctor_photo; }
-      setCMS('doctor-name', d.doctor_name);
-      setCMS('doctor-credentials', d.doctor_credentials);
-      setCMS('bio-p1', d.bio_p1);
-      setCMS('bio-p2', d.bio_p2);
-
-      // ── SERVICES ────────────────────────────────────────────────────────────
-      setCMS('service1-title', d.service1_title);
-      setCMS('service2-title', d.service2_title);
-      setCMS('service3-title', d.service3_title);
-      setCMS('service4-title', d.service4_title);
-
-      // ── CTA SECTION ─────────────────────────────────────────────────────────
-      setCMS('cta-heading', d.cta_heading);
-      setCMS('cta-lead', d.cta_lead);
-
-      // ── GROUP SECTION — LEFT SIDE ───────────────────────────────────────────
-      if(d.group_month){
-        var heading = document.querySelector('[data-cms="group-heading"]');
-        if(heading) heading.innerHTML = d.group_month.toUpperCase() + '<br>GROUP';
-      }
-      setCMS('group-left-desc', d.group_left_desc);
-      if(Array.isArray(d.group_left_bullets)){
-        var leftUl = document.querySelector('[data-cms="group-left-bullets"]');
-        if(leftUl) leftUl.innerHTML = d.group_left_bullets.map(function(b){
-          return '<li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:rgba(255,255,255,0.8);"><span style="color:#6ee7b7;font-weight:700;">✓</span> ' + b + '</li>';
-        }).join('');
-      }
-      var joinBtn = document.querySelector('[data-cms="group-join-btn"]');
-      if(joinBtn){ if(d.group_apply_url) joinBtn.href = d.group_apply_url; if(d.group_join_btn_text) joinBtn.textContent = d.group_join_btn_text; }
-
-      // ── GROUP SECTION — CARD ────────────────────────────────────────────────
-      setCMS('group-status-badge', d.group_status_badge);
-      setCMS('group-card-title', d.group_card_title);
-      setCMS('group-availability', d.group_availability);
-      setCMS('group-intro', d.group_intro);
-      setCMS('group-price', d.group_price);
-      setCMS('group-urgency-title', d.group_urgency_title);
-      setCMS('group-urgency-sub', d.group_urgency_sub);
-      if(d.group_price_note){ var pn = document.querySelector('[data-cms="group-price-note"]'); if(pn) pn.innerHTML = d.group_price_note.replace(/\n/g,'<br>'); }
-      if(Array.isArray(d.group_includes)){
-        var incUl = document.querySelector('[data-cms="group-includes"]');
-        if(incUl) incUl.innerHTML = d.group_includes.map(function(item){
-          return '<li><span class="check">✓</span><span>' + item + '</span></li>';
-        }).join('');
-      }
-      var applyBtn = document.querySelector('[data-cms="group-apply-btn"]');
-      if(applyBtn){
-        if(d.group_apply_url) applyBtn.href = d.group_apply_url;
-        applyBtn.textContent = d.applications_open === false ? 'Join the Waitlist →' : (d.group_apply_btn_text || 'Apply for the Group →');
-      }
-
-      // ── TESTIMONIALS ────────────────────────────────────────────────────────
-      setCMS('testimonials-lead', d.testimonials_lead);
-      if(Array.isArray(d.testimonials) && d.testimonials.length){
-        var grid = document.getElementById('testimonials-grid');
-        if(grid){
-          grid.innerHTML = d.testimonials.map(function(t, i){
-            var delay = i % 3 === 1 ? ' reveal-delay-1' : i % 3 === 2 ? ' reveal-delay-2' : '';
-            return '<div class="testimonial-card reveal' + delay + '">' +
-              '<p class="testimonial-text">' + t.quote + '</p>' +
-              '<div class="testimonial-author"><strong>' + t.name + '</strong>' +
-              (t.location ? '<span>' + t.location + '</span>' : '') +
-              '</div></div>';
-          }).join('');
-        }
-      }
-
-      // ── FAQ ─────────────────────────────────────────────────────────────────
-      if(Array.isArray(d.faq) && d.faq.length){
-        var faqList = document.getElementById('faq-list');
-        if(faqList){
-          faqList.innerHTML = d.faq.map(function(item){
-            return '<div class="faq-item">' +
-              '<button class="faq-question" onclick="this.parentElement.classList.toggle('open')">' +
-              item.question +
-              '<span class="faq-icon">+</span></button>' +
-              '<div class="faq-answer"><div class="faq-answer-inner">' + item.answer + '</div></div>' +
-              '</div>';
-          }).join('');
-        }
-      }
-
-      // ── SEO — update meta tags dynamically ──────────────────────────────────
-      if(d.seo_title){ document.title = d.seo_title; var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.content = d.seo_title; }
-      if(d.seo_description){ var metaDesc = document.querySelector('meta[name="description"]'); if(metaDesc) metaDesc.content = d.seo_description; var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.content = d.seo_description; }
-
-    })
-    .catch(function(){});
-})();
-</script>
-</body>
-</html>
+/* ── Glucose Health Quiz ────────────────�
