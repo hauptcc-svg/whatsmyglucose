@@ -2,15 +2,15 @@
   "group_month": "June 2026",
   "group_status_badge": "Starting Soon",
   "group_card_title": "JUNE 2026 GROUP",
-  "group_availability": "Limited spaces — applications open now",
-  "group_left_desc": "The June 2026 group programme brings together a small cohort of participants for a structured glucose health experience — with Dr. Janny guiding the group through the process.",
+  "group_availability": "Limited spaces - applications open now",
+  "group_left_desc": "By the end of this month long guided glucose group with Dr. Janny Myburg, you will understand glucose, insulin resistance, and your own body far better than before; in a practical, realistic, and empowering way.",
   "group_left_bullets": [
-    "4-week structured programme",
-    "CGM monitoring period included",
-    "Weekly group sessions with Dr. Janny",
-    "Personalised data review",
-    "Meal and lifestyle guidance",
-    "Community support throughout"
+    "Designed to fit into a busy schedule",
+    "Learn about your own glucose levels",
+    "Real person Medical Guidance",
+    "Improve your energy",
+    "Improve mood and sleep",
+    "Simple Steps"
   ],
   "group_intro": "Learn together, ask questions, and apply what you learn in real life.",
   "group_includes": [
@@ -20,12 +20,12 @@
     "Go through the course at your own pace — sessions are short and fit a busy schedule"
   ],
   "group_price": "R500",
-  "group_price_note": "per person\nCGM optional — recommended for a more personal experience.\nParticipants purchase their own CGM if they choose to use one.",
+  "group_price_note": "per person\nParticipants need to purchase their own CGM (continous glucose monitor).",
   "group_urgency_title": "Applications now open",
-  "group_urgency_sub": "Small cohort — spaces fill quickly. Secure yours early.",
+  "group_urgency_sub": "Group is limited. Secure yours early.",
   "applications_open": true,
   "group_apply_url": "https://preview.mailerlite.io/forms/2264283/184920955714275229/share",
   "group_apply_btn_text": "Apply for the June Group →",
   "group_join_btn_text": "Join the June Group →",
-  "group_description": "The June 2026 group programme brings together a small cohort of participants for a structured glucose health experience — with Dr. Janny guiding the group through the process."
+  "group_description": "By the end of this month long guided glucose group with Dr. Janny Myburg, you will understand glucose, insulin resistance, and your own body far better than before; in a practical, realistic, and empowering way."
 }
